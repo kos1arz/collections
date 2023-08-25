@@ -1,4 +1,6 @@
-version: "3.4"
+version: "3.9"
+
+name: "onwf"
 
 services:
   php:
@@ -23,6 +25,8 @@ services:
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://caddy/.well-known/mercure}
       MERCURE_PUBLIC_URL: https://${SERVER_NAME:-localhost}/.well-known/mercure
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+    networks:
+      - symfony
 
   caddy:
     image: ${IMAGES_PREFIX:-}app-caddy
@@ -50,6 +54,28 @@ services:
       - target: 443
         published: ${HTTP3_PORT:-443}
         protocol: udp
+    networks:
+      - symfony
+
+  mysql:
+    image: mysql:8.0.32
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    networks:
+      - symfony
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      UPLOAD_LIMIT: 200M
+      MAX_EXECUTION_TIME: 20000
+      MEMORY_LIMIT: 4000M
+    networks:
+      - symfony
 
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
@@ -61,3 +87,7 @@ volumes:
   caddy_config:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+
+networks:
+  symfony:
+    name: symfony
