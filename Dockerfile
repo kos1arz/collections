@@ -36,10 +36,9 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
+        pdo_mysql \
+        bz2 \
     ;
-
-###> recipes ###
-###< recipes ###
 
 COPY --link docker/php/conf.d/app.ini $PHP_INI_DIR/conf.d/
 
