@@ -1,0 +1,3 @@
+# app/config/config.yml
+imports:
+  - { resource: parameters.yaml }
