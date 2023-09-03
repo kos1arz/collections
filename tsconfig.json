@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
     "baseUrl": "../node_modules",

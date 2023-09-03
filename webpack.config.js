@@ -1,6 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const webpack = require('webpack');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -15,6 +14,11 @@ Encore
     .setPublicPath('/build')
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
+
+    .copyFiles({
+      from: './assets/images',
+      to: 'images/[path][name].[ext]'
+   })
 
     /*
      * ENTRY CONFIG
@@ -69,15 +73,21 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    // .autoProvidejQuery()
+    .autoProvidejQuery()
 ;
 
-module.exports = {
-    ...Encore.getWebpackConfig(),
-    optimization: {
-        minimizer: [
-            new CssMinimizerPlugin(),
-        ],
-    },
-    plugins: [new MiniCssExtractPlugin()],
-}
+const config = Encore.getWebpackConfig();
+
+config.plugins.push(
+  new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
+  })
+);
+
+module.exports = config;
+// module.exports = {
+//     ...Encore.getWebpackConfig(),
+// }
