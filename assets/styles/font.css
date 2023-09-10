@@ -1,0 +1,31 @@
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-48 {
+    font-size: 48px;
+}
+
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.font-weight-900 {
+    font-weight: 900;
+}
+
+.line-height-30 {
+    line-height: 30px;
+}
+
+.gap-40 {
+    gap: 40px;
+}
+
+.text-color-blue {
+    color: #27449b;
+}
+
+.text-color-gray {
+    color: #858BAD !important;
+}
