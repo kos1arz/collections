@@ -1,0 +1,53 @@
+.tab-box {
+    .chose-tap-text {
+        color: #292c3d;
+        font-weight: 400;
+        font-size: 18px;
+        float: left;
+        padding-right: 10px;
+        padding-top: 8px;
+
+        @media (max-width: 991px) {
+            font-size: 14px;
+            padding-left: 15px;
+        }
+    }
+
+    .nav-link {
+        font-weight: 700;
+        font-size: 14px;
+        color: #27449b;
+        padding: 12px 24px;
+        border-radius: 4px;
+        border: none;
+
+        @media (max-width: 991px) {
+            font-size: 12px;
+            padding: 8px 12px;
+        }
+
+        &.active {
+            color: #27449b;
+            background: #ebeefa;
+        }
+    }
+}
+
+.tab-content {
+    .chose-tap-text-in {
+        color: #292c3d;
+        font-weight: 400;
+        font-size: 18px;
+        float: left;
+        padding-right: 10px;
+        padding-top: 8px;
+    }
+
+    .chose-tap-text-in {
+        padding-top: 0px;
+
+        @media (max-width: 991px) {
+            font-size: 12px;
+        }
+    }
+}

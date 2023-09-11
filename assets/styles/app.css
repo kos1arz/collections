@@ -623,45 +623,6 @@ button.white-button:hover {
     padding-top: 8px;
 }
 
-.chose-tap-text {
-    color: #292c3d;
-    font-weight: 400;
-    font-size: 18px;
-    float: left;
-    padding-right: 10px;
-    padding-top: 8px;
-}
-
-.chose-tap-text-in {
-    color: #292c3d;
-    font-weight: 400;
-    font-size: 18px;
-    float: left;
-    padding-right: 10px;
-    padding-top: 0px;
-}
-
-@media (max-width: 991px) {
-    .chose-tap-text {
-        color: #292c3d;
-        font-weight: 400;
-        font-size: 14px;
-        float: left;
-        padding-right: 10px;
-        padding-top: 8px;
-        padding-left: 15px;
-    }
-
-    .chose-tap-text-in {
-        color: #292c3d;
-        font-weight: 400;
-        font-size: 12px;
-        float: left;
-        padding-right: 10px;
-        padding-top: 0px;
-    }
-}
-
 .chose-language-icon {
     width: 22px;
 }
@@ -891,48 +852,6 @@ img.section-img {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-}
-
-.tab-button.active {
-    font-weight: 700;
-    font-size: 14px;
-    color: #27449b;
-    padding: 12px 24px;
-    background: #ebeefa;
-    border-radius: 4px;
-    border: none;
-}
-
-.tab-button {
-    font-weight: 700;
-    font-size: 14px;
-    color: #27449b;
-    padding: 12px 24px;
-    border-radius: 4px;
-    border: none;
-    background: #fff;
-}
-
-@media (max-width: 991px) {
-    .tab-button.active {
-        font-weight: 700;
-        font-size: 12px;
-        color: #27449b;
-        padding: 8px 12px;
-        background: #ebeefa;
-        border-radius: 4px;
-        border: none;
-    }
-
-    .tab-button {
-        font-weight: 700;
-        font-size: 12px;
-        color: #27449b;
-        padding: 8px 12px;
-        border-radius: 4px;
-        border: none;
-        background: #fff;
-    }
 }
 
 .tab-button2.active {
