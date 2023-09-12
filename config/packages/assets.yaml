@@ -1,0 +1,7 @@
+framework:
+  assets:
+    packages:
+      first_build:
+        json_manifest_path: '%kernel.project_dir%/public/manifest.json'
+      second_build:
+        json_manifest_path: '%kernel.project_dir%/public/admin/manifest.json'
