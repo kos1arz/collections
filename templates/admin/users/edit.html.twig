@@ -1,5 +1,55 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
+{% block content_title %}
+Edit user
+{% endblock %}
+
+{% block page_actions %}
+    {% for action in ea.entity.actions %}
+        {{ include(action.templatePath, { action: action }, with_context = false) }}
+    {% endfor %}
+{% endblock %}
+
 {% block main %}
-{{ form(form) }}
+    <div class="col col-md-8 m-0">
+        {{ form_start(form, { attr: { id: 'edit-User-form', class: 'ea-edit-form'} }) }}
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Details
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Change password
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                {{ form_row(form.username) }}
+                {{ form_row(form.lastname) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.enabled) }}
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                {{ form_row(form.password_plain) }}
+
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
+        </div>
+
+        {{ form_end(form) }}
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec dapibus lorem. Aliquam erat volutpat. Phasellus a eros eget enim sodales molestie. Fusce elit metus, dictum in odio in, bibendum pharetra mi. Nam est dui, consectetur sagittis odio eu, ullamcorper porta nisl. Morbi ut iaculis arcu. Aenean porta erat eget ante bibendum ornare. Curabitur consectetur augue vel magna fermentum aliquet. Pellentesque sed tortor semper, posuere lacus in, pulvinar felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ex libero, aliquet eu odio vitae, elementum venenatis ante. Nullam finibus, mauris non euismod rhoncus, justo diam blandit nunc, at vestibulum metus nisi aliquet leo. Ut tincidunt nunc eget urna ultricies maximus. Nulla facilisi. Aliquam erat volutpat. Aliquam arcu metus, vestibulum non ultrices ut, sollicitudin non arcu.
+
+        Phasellus tincidunt mi id ipsum euismod blandit. Pellentesque mollis, dui in ullamcorper viverra, tellus mauris egestas sem, in dignissim dolor ipsum quis dolor. Donec varius massa in vehicula ultricies. Fusce dapibus lacus vitae mauris ultricies, ornare finibus sem ullamcorper. Curabitur et risus tellus. Nunc finibus scelerisque felis nec lacinia. Quisque convallis venenatis congue.
+
+        Morbi quis laoreet lectus. Pellentesque nec massa iaculis, condimentum leo in, suscipit tellus. Etiam scelerisque, tellus vel iaculis tristique, tellus dui condimentum magna, id rhoncus diam dolor eu dolor. Proin risus metus, semper vitae urna in, auctor ultricies risus. Curabitur congue erat neque. Nullam auctor libero luctus, pretium justo a, malesuada libero. Mauris rutrum dignissim lobortis. Phasellus vestibulum consectetur lectus, nec maximus ipsum blandit vel. Aenean tortor metus, condimentum id porttitor vel, commodo ac tellus. Nam mattis vel ligula sed pulvinar. Maecenas semper accumsan lorem, in varius lorem pellentesque in. Aenean aliquet, sem quis efficitur congue, sapien justo maximus mi, euismod venenatis justo metus eu orci. Aliquam vel enim eu enim rutrum imperdiet. Quisque vehicula vehicula gravida.
+
+        Nulla fermentum, ipsum nec euismod laoreet, magna ligula dictum urna, vel egestas justo est a leo. Sed sollicitudin sodales eleifend. Donec mauris ante, fermentum finibus rhoncus ac, hendrerit at libero. Donec eget pellentesque nulla. Aenean ultricies aliquet tortor, a pulvinar eros rutrum nec. Donec auctor fringilla odio sed dictum. Phasellus sit amet venenatis erat. Phasellus blandit est at urna cursus ultricies. Vivamus quis orci non lacus dapibus ornare non facilisis leo. In cursus tortor non ante tristique pharetra. Ut sagittis ullamcorper ante sit amet placerat.
+
+        Donec interdum, orci non consequat consequat, quam eros feugiat ligula, quis ultricies ipsum purus ac ante. In sagittis tortor non turpis tempus commodo. Suspendisse pharetra mi sed volutpat fermentum. Donec pretium dui et libero commodo, nec viverra nulla facilisis. Vivamus molestie sem elit, at varius dolor bibendum sed. Nullam et mauris magna. Morbi euismod tortor diam, ac consectetur dui blandit id. Morbi diam metus, interdum vel pellentesque nec, tincidunt pellentesque elit. Fusce vehicula commodo erat. Mauris nisi est, ultricies eget nibh non, egestas pharetr
+    </div>
 {% endblock %}
