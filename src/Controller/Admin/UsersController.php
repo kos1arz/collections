@@ -9,6 +9,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,16 +28,28 @@ class UsersController extends AbstractCrudController
 //    }
 
 
+    public function __construct(private AdminUrlGenerator $urlGenerator) {
+
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id'),
+            TextField::new('username'),
+            TextField::new('lastname'),
+            TextField::new('email'),
+            DateField::new('bornDate'),
+            BooleanField::new('enabled'),
+            DateTimeField::new('lastLogin'),
+        ];
+    }
+
     public function configureActions(Actions $actions): Actions
     {
-        $viewStripeInvoice = Action::new('viewInvoice', 'Invoice', 'fa fa-file-invoice')
-            ->linkToUrl(function (User $entity) {
-                return 'https://www.stripe.com/invoice/';
-            });
-
         return $actions
-            ->add(Crud::PAGE_INDEX, Action::DETAIL)
-            ->add(Crud::PAGE_EDIT, $viewStripeInvoice);
+            ->add(Crud::PAGE_INDEX, Action::INDEX);
+
     }
     public static function getEntityFqcn(): string
     {
@@ -47,13 +65,18 @@ class UsersController extends AbstractCrudController
         $form->handleRequest($context->getRequest());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->container->get('doctrine')->getManager();
             $entityManager->flush();
 
-            // Możesz dodać komunikat sukcesu lub przekierowanie gdziekolwiek chcesz
             $this->addFlash('success', 'Obiekt został zaktualizowany.');
 
-            return $this->redirectToRoute('lista_obiektow'); // Przekierowanie do listy obiektów
+            if($context->getRequest()->request->all('ea')['newForm']['btn'] === Action::SAVE_AND_CONTINUE) {
+                $url = $this->urlGenerator->setRoute('app_admin_users_edit', ['id' => $context->getEntity()->getInstance()->getId()])->generateUrl();
+                return $this->redirect($url);
+            }
+
+            $url = $this->urlGenerator->setController(UsersController::class)->generateUrl();
+            return $this->redirect($url);
         }
 
         return $this->render('admin/users/edit.html.twig', [

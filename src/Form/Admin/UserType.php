@@ -17,7 +17,7 @@ class UserType extends AbstractType
             ->add('lastname')
             ->add('email')
             ->add('enabled')
-            ->add('password_plain', TextType::class, ['mapped' => false])
+            ->add('password_plain', TextType::class, ['mapped' => false, 'required' => false])
         ;
     }
 
