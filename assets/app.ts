@@ -13,98 +13,42 @@ import "./styles/modules/tabs.scss";
 
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "owl.carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
+import "bootstrap-select/dist/js/bootstrap-select.min.js";
+import "bootstrap-select/dist/css/bootstrap-select.min.css";
+import "./js/carousel.ts";
 
-// const $ = require('jquery');
-// require('bootstrap');
-// $("#recipeCarousel").owlCarousel({
-//   interval: 10000,
-// });
-$(document).ready(function () {
-  // $("#recipeCarousel.carousel .carousel-item").owlCarousel({
-  //     loop: true,
-  //     autoplay: true,
-  //     autoplayTimeout: 10000,
-  // });
+// const $ = require("jquery");
 
-  // $("#recipeCarousel").owlCarousel({
-  //   interval: 10000,
-  // });
+// $(document).ready(() => {
+//   $(".selectpicker").selectpicker();
 
-  $("#recipeCarousel.carousel .carousel-item").each(function (
-    this: HTMLElement,
-    index: number,
-    element: HTMLElement
-  ) {
-    var minPerSlide = 3;
-    var next = $(this).next();
-    if (!next.length) {
-      next = $(this).siblings(":first");
-    }
-    next.children(":first-child").clone().appendTo($(this));
+//   $('.selectpicker[data-live-search="true"]').on(
+//     "input",
+//     ".bs-searchbox input",
+//     function (this: JQuery<HTMLInputElement>) {
+//       const select = $(this)
+//         .closest(".bootstrap-select")
+//         .prev("select.selectpicker");
+//       const options = select.find("option");
+//       const searchText = $(this).val().toLowerCase();
+//       let matchCount = 0;
+//       const limit = parseInt(select.data("limit"), 10) || 5;
 
-    for (var i = 0; i < minPerSlide; i++) {
-      next = next.next();
-      if (!next.length) {
-        next = $(this).siblings(":first");
-      }
+//       options.each(function () {
+//         // @ts-ignore
+//         const optionText = $(this).text().toLowerCase();
 
-      next.children(":first-child").clone().appendTo($(this));
-    }
-  });
-});
-/////////////////////////////////////////////////////////////////////////////////////////////////
-$(document).ready(function () {
-  if ($(".brands_slider").length) {
-    var brandsSlider = $(".brands_slider");
+//         if (optionText.indexOf(searchText) !== -1 && matchCount < limit) {
+//           // @ts-ignore
+//           $(this).show();
+//           matchCount++;
+//         } else {
+//           // @ts-ignore
+//           $(this).hide();
+//         }
+//       });
 
-    brandsSlider.owlCarousel({
-      loop: true,
-      autoplay: true,
-      autoplayTimeout: 1000,
-      nav: false,
-      dots: false,
-      autoWidth: true,
-      items: 8,
-      margin: 42,
-    });
-
-    if ($(".brands_prev").length) {
-      var prev = $(".brands_prev");
-      prev.on("click", function () {
-        brandsSlider.trigger("prev.owl.carousel");
-      });
-    }
-
-    if ($(".brands_next").length) {
-      var next = $(".brands_next");
-      next.on("click", function () {
-        brandsSlider.trigger("next.owl.carousel");
-      });
-    }
-  }
-});
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-// // $("#recipeCarousel2").carousel({
-// //   interval: 10000,
-// // });
-
-// $("#recipeCarousel2.carousel .carousel-item").each(function () {
-//   var minPerSlide = 3;
-//   var next = $(this).next();
-//   if (!next.length) {
-//     next = $(this).siblings(":first");
-//   }
-//   next.children(":first-child").clone().appendTo($(this));
-
-//   for (var i = 0; i < minPerSlide; i++) {
-//     next = next.next();
-//     if (!next.length) {
-//       next = $(this).siblings(":first");
+//       select.selectpicker("refresh");
 //     }
-
-//     next.children(":first-child").clone().appendTo($(this));
-//   }
+//   );
 // });

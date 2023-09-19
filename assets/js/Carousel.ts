@@ -1,40 +1,113 @@
-// import 'owl.carousel';
+import "./owl.carousel.js";
 
-// export class Carousel {
-//   private owlCarousel: JQuery<HTMLElement> | null = null;
+$(document).ready(function () {
+  (<any>$("#recipeCarousel")).carousel({
+    interval: 10000,
+  });
 
-//   constructor() {
-//       document.addEventListener("DOMContentLoaded", () => this.onDocumentReady());
-//   }
+  $("#recipeCarousel.carousel .carousel-item").each(function () {
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(":first");
+    }
+    next.children(":first-child").clone().appendTo($(this));
 
-//   private onDocumentReady() {
-//       const brandsSlider = document.querySelector('.brands_slider');
+    for (var i = 0; i < minPerSlide; i++) {
+      next = next.next();
+      if (!next.length) {
+        next = $(this).siblings(":first");
+      }
 
-//       if (brandsSlider) {
-//           this.owlCarousel = $(brandsSlider).owlCarousel({
-//               loop: true,
-//               autoplay: true,
-//               autoplayTimeout: 1000,
-//               nav: false,
-//               dots: false,
-//               autoWidth: true,
-//               items: 8,
-//               margin: 42,
-//           });
+      next.children(":first-child").clone().appendTo($(this));
+    }
+  });
 
-//           const prev = document.querySelector('.brands_prev');
-//           if (prev) {
-//             prev.addEventListener('click', () => {
-//                 if (this.owlCarousel) this.owlCarousel.trigger('prev.owl.carousel');
-//             });
-//           }
+  (<any>$("#recipeCarousel2")).carousel({
+    interval: 10000,
+  });
 
-//           const next = document.querySelector('.brands_next');
-//           if (next) {
-//             next.addEventListener('click', () => {
-//                 if (this.owlCarousel) this.owlCarousel.trigger('next.owl.carousel');
-//             });
-//           }
-//       }
-//   }
-// }
+  $("#recipeCarousel2.carousel .carousel-item").each(function () {
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(":first");
+    }
+    next.children(":first-child").clone().appendTo($(this));
+
+    for (var i = 0; i < minPerSlide; i++) {
+      next = next.next();
+      if (!next.length) {
+        next = $(this).siblings(":first");
+      }
+
+      next.children(":first-child").clone().appendTo($(this));
+    }
+  });
+
+  if ($(".brands_slider").length) {
+    var brandsSlider = $(".brands_slider");
+
+    (brandsSlider as any).owlCarousel({
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      nav: false,
+      dots: false,
+      autoWidth: true,
+      items: 8,
+      margin: 42,
+    });
+
+    if ($(".brands_prev").length) {
+      var prev = $(".brands_prev");
+      prev.on("click", function () {
+        brandsSlider.trigger("prev.owl.carousel");
+      });
+    }
+
+    if ($(".brands_next").length) {
+      var next = $(".brands_next");
+      next.on("click", function () {
+        brandsSlider.trigger("next.owl.carousel");
+      });
+    }
+  }
+
+  if ($(".brands_slider").length) {
+    var brandsSlider = $(".brands_slider");
+
+    (brandsSlider as any).owlCarousel({
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      nav: false,
+      dots: false,
+      autoWidth: true,
+      items: 8,
+      margin: 45,
+    });
+
+    if ($(".brands_prev").length) {
+      var prev = $(".brands_prev");
+      prev.on("click", function () {
+        brandsSlider.trigger("prev.owl.carousel");
+      });
+    }
+
+    if ($(".brands_next").length) {
+      var next = $(".brands_next");
+      next.on("click", function () {
+        brandsSlider.trigger("next.owl.carousel");
+      });
+    }
+  }
+
+  $(".contact-tab-collapse").click(function () {
+    if ($(this).hasClass("open")) {
+      $(this).removeClass("open");
+    } else {
+      $(this).addClass("open");
+    }
+  });
+});

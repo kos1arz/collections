@@ -1,0 +1,20 @@
+<!-- {% set defaultOptions = {
+    'name': 'dropdown',
+    'id': '',
+    'options': [
+        {'value': '1', 'label': '<strong>Opcja</strong>1'},
+        {'value': '2', 'label': '<strong>Opcja</strong>2'},
+    ],
+    'selected': 2,
+    'placeholder': 'Wybierz222...',
+    'limit': 5
+} %}
+
+{% set options = options|default({})|merge(defaultOptions) %}
+
+<select name="{{ options.name }}" id="{{ options.id }}" class="selectpicker" data-live-search="true" data-width="100%" data-limit="{{ options.limit }}">
+    <option value="">{{ options.placeholder }}</option>
+    {% for option in options.options %}
+        <option value="{{ option.value }}" {% if option.value == options.selected %}selected{% endif %}>{{ option.label|raw }}</option>
+    {% endfor %}
+</select> -->

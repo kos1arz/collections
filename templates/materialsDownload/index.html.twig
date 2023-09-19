@@ -1,0 +1,427 @@
+{% extends 'base.html.twig' %} {% block title %}Kontakt{% endblock %} {%block
+headerBaner %} {% include 'materialsDownload/headerBaner.html.twig' %} {%
+endblock %} {%block content %}
+
+<div class="container" style="margin-top: 35px">
+    <div class="row">
+        <dic class="col-12 col-lg-4">
+            <div
+                class="col-12 know-icons-2 d-flex justify-content-lg-center justify-content-start"
+            >
+                <a href="#" class="know-icons-wrap-2 active">
+                    <div class="">
+                        <h4>Trener Nordic Walking</h4>
+                        <p>12 materiałów</p>
+                    </div>
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="41"
+                            viewBox="0 0 40 41"
+                            fill="none"
+                        >
+                            <path
+                                d="M20 30.5C25.5228 30.5 30 26.0228 30 20.5C30 14.9772 25.5228 10.5 20 10.5C14.4772 10.5 10 14.9772 10 20.5C10 26.0228 14.4772 30.5 20 30.5Z"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M20 24.5L24 20.5L20 16.5"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M16 20.5H24"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div
+                class="col-12 know-icons-2 d-flex justify-content-lg-center justify-content-start"
+            >
+                <a href="#" class="know-icons-wrap-2">
+                    <div class="">
+                        <h4>Sędzia Nordic Walking 2022</h4>
+                        <p>12 materiałów</p>
+                    </div>
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="41"
+                            viewBox="0 0 40 41"
+                            fill="none"
+                        >
+                            <path
+                                d="M20 30.5C25.5228 30.5 30 26.0228 30 20.5C30 14.9772 25.5228 10.5 20 10.5C14.4772 10.5 10 14.9772 10 20.5C10 26.0228 14.4772 30.5 20 30.5Z"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M20 24.5L24 20.5L20 16.5"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M16 20.5H24"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div
+                class="col-12 know-icons-2 d-flex justify-content-lg-center justify-content-start"
+            >
+                <a href="#" class="know-icons-wrap-2">
+                    <div class="">
+                        <h4>Instruktor Nordic Walking - Warszawa</h4>
+                        <p>12 materiałów</p>
+                    </div>
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="41"
+                            viewBox="0 0 40 41"
+                            fill="none"
+                        >
+                            <path
+                                d="M20 30.5C25.5228 30.5 30 26.0228 30 20.5C30 14.9772 25.5228 10.5 20 10.5C14.4772 10.5 10 14.9772 10 20.5C10 26.0228 14.4772 30.5 20 30.5Z"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M20 24.5L24 20.5L20 16.5"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M16 20.5H24"
+                                stroke="#858BAD"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </dic>
+
+        <dic class="col-12 col-lg-8 downloadable-materials-box">
+            <div class="row">
+                <div class="downloadable-materials-box-header">
+                    <div>
+                        <p>Lista plików do pobrania</p>
+                    </div>
+                    <div>
+                        <select class="option-drop-down">
+                            <option value="">SORTUJ PO NAJNOWSZYCH</option>
+                            <option value="1">SORTUJ PO NAJNOWSZYCH</option>
+                            <option value="2">SORTUJ PO NAJNOWSZYCH</option>
+                            <option value="3">SORTUJ PO NAJNOWSZYCH</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row pdf-cont">
+                        <div class="col-2 col-lg-1">
+                            <img
+                                src="{{ asset('build/images/pdf.png') }}"
+                                class="mx-auto d-block"
+                            />
+                        </div>
+                        <div class="col-10 col-lg-9">
+                            <h3>Trening wzmacniający interwałowy</h3>
+                            <p class="text-color-gray">Trener Nordic Walking</p>
+                            <p class="text-color-gray">PDF 17 kB</p>
+                        </div>
+                        <div class="col-12 col-lg-2 pdf-cont-in">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="pdf-download">Pobierz</a>
+                                </div>
+
+                                <div
+                                    class="col-12 text-center pdf-open-border-top"
+                                >
+                                    <a href="#" class="pdf-open">Podgląd</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="row">
+                        <div
+                            class="col-12 col-lg-6 d-flex justify-content-start pagination-mobile"
+                        >
+                            <div class="pagination">
+                                Pokaż na stronie:
+                                <span
+                                    aria-current="page"
+                                    class="page-numbers current"
+                                    >15</span
+                                >
+                                <a class="page-numbers" href="#">30</a>
+                                <a class="page-numbers" href="#">45</a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-12 col-lg-6 d-flex justify-content-end pagination-mobile"
+                        >
+                            <div class="pagination">
+                                <a class="prev page-numbers" href="#"
+                                    >« Poprzednie</a
+                                >
+                                <a class="page-numbers" href="#">1</a>
+                                <span
+                                    aria-current="page"
+                                    class="page-numbers current"
+                                    >2</span
+                                >
+                                <a class="page-numbers" href="#">3</a>
+                                <a class="page-numbers" href="#">4</a>
+                                <a class="next page-numbers" href="#"
+                                    >Następne »</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dic>
+    </div>
+</div>
+
+{% endblock %}
