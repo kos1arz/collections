@@ -1,0 +1,23 @@
+.main-date-picker {
+    width: 100% !important;
+    font-weight: 600;
+    color: #8a8fa8 !important;
+    font-size: 14px;
+    border: 1px solid #c2c5d6 !important;
+    border-radius: 4px;
+    padding: 14px 24px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0px solid transparent;
+    background-image: url(../../../assets/images/calendar.svg);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}

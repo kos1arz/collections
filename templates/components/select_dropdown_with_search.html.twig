@@ -1,0 +1,16 @@
+{% block select_dropdown_with_search %}
+<select class="main-select {{ class }}" name="{{ name }}">
+    <option value="" disabled selected hidden>{{ placeholder }}</option>
+    {% for value, label in options %}
+    <option value="{{ value }}">
+        {{ label }}
+    </option>
+    {% endfor %}
+</select>
+{% endblock %} {% block javascripts %}
+<script type="text/javascript">
+    $(".main-select").select2({
+        placeholder: "{{ placeholder }}",
+    });
+</script>
+{% endblock %}
