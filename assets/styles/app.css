@@ -219,6 +219,7 @@ p.banner-p {
 
 .nopad {
     padding: 0px !important;
+    position: relative;
 }
 
 .nopad-mobile {
