@@ -1,748 +1,683 @@
-{% extends 'base.html.twig' %} {% block title %}Szkolenia{% endblock %} {%block
-headerBaner %} {% include 'training/list/headerBaner.html.twig' %} {%endblock %}
+{% extends 'base.html.twig' %}
+{% block title %}Szkolenia
+{% endblock %}
+{%block
+headerBaner %}
+	{% include 'training/list/headerBaner.html.twig' %}
+{%endblock %}
 {% block content %}
 
-<div class="container" style="margin-top: 50px">
-    <div class="row">
-        <div class="col-12 col-lg-3" style="margin-bottom: 15px">
-            <p>Wybierz szkolenie</p>
-            <select class="option-drop-down">
-                <option value="">WSZYSTKIE SZKOLENIA</option>
-                <option value="1">INSTRUKTOR</option>
-                <option value="2">SEDZIA</option>
-                <option value="3">TRENER</option>
-            </select>
-        </div>
-
-        <div class="col-12 col-lg-3" style="margin-bottom: 15px">
-            <p>Miesiąc</p>
-            <select class="option-drop-down-calendar">
-                <option value="">WYBIERZ MIESIĄC</option>
-                <option value="1">Styczeń</option>
-                <option value="2">Luty</option>
-                <option value="3">Marzec</option>
-                <option value="4">Kwiecień</option>
-                <option value="5">Maj</option>
-            </select>
-        </div>
-
-        <div class="col-12 col-lg-3" style="margin-bottom: 15px">
-            <p>Wybierz Państwo</p>
-            <select class="option-drop-down">
-                <option value="">POLSKA</option>
-                <option value="2">NIEMCY</option>
-                <option value="3">WIELKA BRYTANIA</option>
-            </select>
-        </div>
-
-        <div class="col-12 col-lg-3" style="margin-bottom: 15px">
-            <p>Wybierz miasto</p>
-            <select class="option-drop-down">
-                <option value="">WARSZAWA</option>
-                <option value="2">POZNAŃ</option>
-                <option value="3">SIEMIANOWICE ŚLĄSKIE</option>
-            </select>
-        </div>
-
-        <div class="col-12 col-lg-4 offset-lg-4" style="margin-top: 15px">
-            <a href="#" class="blue-button d-flex justify-content-center"
-                >SZUKAJ SZKOLENIA</a
-            >
-        </div>
-    </div>
-</div>
-
-<div class="container" style="margin-top: 50px">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <h2>Lista szkoleń (23)</h2>
-        </div>
-
-        <div class="col-12 col-lg-3 offset-lg-3">
-            <select class="option-drop-down">
-                <option value="">SORTUJ PO NAJNOWSZYCH</option>
-                <option value="1">SORTUJ PO NAJNOWSZYCH</option>
-                <option value="2">SORTUJ PO NAJNOWSZYCH</option>
-                <option value="3">SORTUJ PO NAJNOWSZYCH</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag3">Sędzia</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag3">Sędzia</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag3">Sędzia</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag1">Instruktor</div>
-
-                            <div class="news-card-image-tag2">Promocja</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-            <div class="row nomarg">
-                <div class="news-card">
-                    <div class="col-12 nopad">
-                        <div class="news-card-image-tags">
-                            <div class="news-card-image-tag3">Sędzia</div>
-                        </div>
-
-                        <img
-                            class="card-img"
-                            src="{{ asset('build/images/img-1.png') }}"
-                        />
-                    </div>
-
-                    <div class="col-12">
-                        <h3>Instruktor Nordic Walking</h3>
-                        <p>
-                            Zostań instruktorem najdynamiczniej rozwijającej się
-                            aktywności na świecie.
-                        </p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="card-map-pin">Kraków</p>
-                        <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                    </div>
-
-                    <div class="col-12">
-                        <p class="price float-left">
-                            360 zł<span class="price-low">560 zł</span>
-                        </p>
-                        <a href="#" class="blue-button float-right"
-                            >KUP SZKOLENIE</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col-12 col-lg-6 d-flex justify-content-start">
-                    <div class="pagination">
-                        Pokaż na stronie:
-                        <span aria-current="page" class="page-numbers current"
-                            >15</span
-                        >
-                        <a class="page-numbers" href="#">30</a>
-                        <a class="page-numbers" href="#">45</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6 d-flex justify-content-end">
-                    <div class="pagination">
-                        <a class="prev page-numbers" href="#">« Poprzednie</a>
-                        <a class="page-numbers" href="#">1</a>
-                        <span aria-current="page" class="page-numbers current"
-                            >2</span
-                        >
-                        <a class="page-numbers" href="#">3</a>
-                        <a class="page-numbers" href="#">4</a>
-                        <a class="next page-numbers" href="#">Następne »</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container" style="margin-top: 50px">
+		<div class="row">
+			<div class="col-12 col-lg-3" style="margin-bottom: 15px">
+				<p>Wybierz szkolenie</p>
+				{%
+                    include 'components/select_dropdown_with_search.html.twig'
+                    with {
+                        class: "training",
+                        name: 'training',
+                        options: {
+                            '1': 'INSTRUKTOR',
+                            '2': 'SEDZIA',
+                            '3': 'TRENER',
+                        },
+                        placeholder: 'WSZYSTKIE SZKOLENIA'
+                    }
+                %}
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-bottom: 15px">
+				<p>Miesiąc</p>
+				<input type="text" class="main-date-picker month-picker" placeholder="WYBIERZ MIESIĄC"/>
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-bottom: 15px">
+				<p>Wybierz Państwo</p>
+				{%
+                    include 'components/select_dropdown_with_search.html.twig'
+                    with {
+                        class: "training",
+                        name: 'training',
+                        options: {
+                            '1': 'POLSKA',
+                            '2': 'NIEMCY',
+                            '3': 'WIELKA BRYTANIA',
+                        },
+                        placeholder: 'WSZYSTKIE PAŃSTWA'
+                    }
+                %}
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-bottom: 15px">
+				<p>Wybierz miasto</p>
+				{%
+                    include 'components/select_dropdown_with_search.html.twig'
+                    with {
+                        class: "training",
+                        name: 'training',
+                        options: {
+                            '1': 'WARSZAWA',
+                            '2': 'POZNAŃ',
+                            '3': 'SIEMIANOWICE ŚLĄSKIE',
+                        },
+                        placeholder: 'WSZYSTKIE MIASTA'
+                    }
+                %}
+			</div>
+
+			<div class="col-12 col-lg-4 offset-lg-4" style="margin-top: 15px">
+				<a href="#" class="blue-button d-flex justify-content-center">SZUKAJ SZKOLENIA</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="margin-top: 50px">
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<h2>Lista szkoleń (23)</h2>
+			</div>
+
+			<div class="col-12 col-lg-3 offset-lg-3">
+				<select class="option-drop-down">
+					<option value="">SORTUJ PO NAJNOWSZYCH</option>
+					<option value="1">SORTUJ PO NAJNOWSZYCH</option>
+					<option value="2">SORTUJ PO NAJNOWSZYCH</option>
+					<option value="3">SORTUJ PO NAJNOWSZYCH</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag3">Sędzia</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag3">Sędzia</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag3">Sędzia</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag1">Instruktor</div>
+
+								<div class="news-card-image-tag2">Promocja</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+				<div class="row nomarg">
+					<div class="news-card">
+						<div class="col-12 nopad">
+							<div class="news-card-image-tags">
+								<div class="news-card-image-tag3">Sędzia</div>
+							</div>
+
+							<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+						</div>
+
+						<div class="col-12">
+							<h3>Instruktor Nordic Walking</h3>
+							<p>
+								Zostań instruktorem najdynamiczniej rozwijającej się
+																																																                            aktywności na świecie.
+							</p>
+						</div>
+
+						<div class="col-12">
+							<p class="card-map-pin">Kraków</p>
+							<p class="card-clock">17 Grudnia 2023, 8:00</p>
+						</div>
+
+						<div class="col-12">
+							<p class="price float-left">
+								360 zł<span class="price-low">560 zł</span>
+							</p>
+							<a href="#" class="blue-button float-right">KUP SZKOLENIE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-12 col-lg-6 d-flex justify-content-start">
+						<div class="pagination">
+							Pokaż na stronie:
+							<span aria-current="page" class="page-numbers current">15</span>
+							<a class="page-numbers" href="#">30</a>
+							<a class="page-numbers" href="#">45</a>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6 d-flex justify-content-end">
+						<div class="pagination">
+							<a class="prev page-numbers" href="#">« Poprzednie</a>
+							<a class="page-numbers" href="#">1</a>
+							<span aria-current="page" class="page-numbers current">2</span>
+							<a class="page-numbers" href="#">3</a>
+							<a class="page-numbers" href="#">4</a>
+							<a class="next page-numbers" href="#">Następne »</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}
