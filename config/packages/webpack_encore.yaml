@@ -2,7 +2,9 @@ webpack_encore:
     # The path where Encore is building the assets - i.e. Encore.setOutputPath()
     output_path: "%kernel.project_dir%/public/build"
     # If multiple builds are defined (as shown below), you can disable the default build:
-    # output_path: false
+    builds:
+        appConfig: "%kernel.project_dir%/public"
+        appAdminConfig: "%kernel.project_dir%/public/build/admin/"
 
     # Set attributes that will be rendered on all script and link tags
     script_attributes:
@@ -18,7 +20,7 @@ webpack_encore:
     # crossorigin: 'anonymous'
 
     # Preload all rendered script and link tags automatically via the HTTP/2 Link header
-    # preload: true
+    preload: true
 
     # Throw an exception if the entrypoints.json file is missing or an entry is missing from the data
     # strict_mode: false
