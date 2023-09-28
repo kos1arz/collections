@@ -11,56 +11,27 @@
 		<div class="row">
 			<div class="col-12 col-lg-4" style="margin-bottom: 15px">
 				<p>Wybierz Państwo</p>
-				{%
-                    include 'components/select_dropdown_with_search.html.twig'
-                    with {
-                        class: "training",
-                        name: 'training',
-                        options: {
-                            '1': 'POLSKA',
-                            '2': 'NIEMCY',
-                            '3': 'WIELKA BRYTANIA',
-                        },
-                        placeholder: 'WSZYSTKIE PAŃSTWA'
-                    }
-                %}
+				{% include 'components/select_dropdown_with_search.html.twig' with {
+            class: "training", name: 'training', options: { '1': 'POLSKA', '2':
+            'NIEMCY', '3': 'WIELKA BRYTANIA', }, placeholder: 'WSZYSTKIE
+            PAŃSTWA' } %}
 			</div>
 
 			<div class="col-12 col-lg-4" style="margin-bottom: 15px">
 				<p>Wybierz miasto</p>
-				{%
-                    include 'components/select_dropdown_with_search.html.twig'
-                    with {
-                        class: "training",
-                        name: 'training',
-                        options: {
-                            '1': 'WARSZAWA',
-                            '2': 'POZNAŃ',
-                            '3': 'SIEMIANOWICE ŚLĄSKIE',
-                        },
-                        placeholder: 'WSZYSTKIE MIASTA'
-                    }
-                %}
+				{% include 'components/select_dropdown_with_search.html.twig' with {
+            class: "training", name: 'training', options: { '1': 'WARSZAWA',
+            '2': 'POZNAŃ', '3': 'SIEMIANOWICE ŚLĄSKIE', }, placeholder:
+            'WSZYSTKIE MIASTA' } %}
 			</div>
 
 			<div class="col-12 col-lg-4" style="margin-bottom: 15px">
 				<p>Wybierz rolę osoby</p>
-				{%
-                    include 'components/select_dropdown_with_search.html.twig'
-                    with {
-                        class: "training",
-                        name: 'training',
-                        options: {
-                            '1': 'PRZEDSTAWICIEL KRAJOWY',
-                            '2': 'SZKOLENIOWIEC',
-                            '3': 'SĘDZIOWIE',
-                            '4': 'KOORDYNATOR',
-                            '5': 'INSTRUKTOR',
-                            '6': 'TRENER',
-                        },
-                        placeholder: 'WSZYSTKIE'
-                    }
-                %}
+				{% include 'components/select_dropdown_with_search.html.twig' with {
+            class: "training", name: 'training', options: { '1': 'PRZEDSTAWICIEL
+            KRAJOWY', '2': 'SZKOLENIOWIEC', '3': 'SĘDZIOWIE', '4':
+            'KOORDYNATOR', '5': 'INSTRUKTOR', '6': 'TRENER', }, placeholder:
+            'WSZYSTKIE' } %}
 			</div>
 
 			<div class="container" style="margin-top: 10px">
@@ -102,50 +73,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
-								</p>
-							</div>
-
-							<div class="row g-0">
-								<div class="col-12">
-									<p class="team-card-hash">#szkoleniowiec</p>
-									<p class="team-card-hash">#instruktor</p>
-									<p class="team-card-hash">#trener</p>
-									<p class="team-card-hash">#sedzia</p>
-								</div>
-							</div>
-
-							<div class="row g-0">
-								<div class="col-7 team-bottom-p">
-									<img src="{{ asset('build/images/PL.svg') }}" class="team-flag"/>
-									<p class="float-start team-bottom-p">Polska</p>
-								</div>
-
-								<div class="col-5 team-bottom-p">
-									<p class="float-end">Poznań</p>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-
-			<div class="col-12 col-lg-3 pe-lg-8">
-				<div class="row g-0">
-					<a href="#" data-bs-toggle="modal" data-bs-target="#person-modal">
-						<div class="team-person-card">
-							<div class="row g-0">
-								<div class="col-12 p-0">
-									<img class="team-person-img" src="{{ asset('build/images/img-1.png') }}"/>
-								</div>
-							</div>
-
-							<div class="col-12">
-								<h3>Aleksander Zlotopolański</h3>
-								<p>
-									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -187,7 +115,49 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
+								</p>
+							</div>
+
+							<div class="row g-0">
+								<div class="col-12">
+									<p class="team-card-hash">#szkoleniowiec</p>
+									<p class="team-card-hash">#instruktor</p>
+									<p class="team-card-hash">#trener</p>
+									<p class="team-card-hash">#sedzia</p>
+								</div>
+							</div>
+
+							<div class="row g-0">
+								<div class="col-7 team-bottom-p">
+									<img src="{{ asset('build/images/PL.svg') }}" class="team-flag"/>
+									<p class="float-start team-bottom-p">Polska</p>
+								</div>
+
+								<div class="col-5 team-bottom-p">
+									<p class="float-end">Poznań</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-3 pe-lg-8">
+				<div class="row g-0">
+					<a href="#" data-bs-toggle="modal" data-bs-target="#person-modal">
+						<div class="team-person-card">
+							<div class="row g-0">
+								<div class="col-12 p-0">
+									<img class="team-person-img" src="{{ asset('build/images/img-1.png') }}"/>
+								</div>
+							</div>
+
+							<div class="col-12">
+								<h3>Aleksander Zlotopolański</h3>
+								<p>
+									Zostań instruktorem najdynamiczniej rozwijającej
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -229,17 +199,17 @@
 						<img class="team-person-modal-img" src="{{ asset('build/images/img-1.png') }}"/>
 
 						<div class="team-person-modal-h4" style="margin-top: 15px">
-							<img src="img/phone-p.svg"/>
+							<img src="{{ asset('build/images/phone-p.svg') }}"/>
 							<h4>+48 501 203 150</h4>
 						</div>
 
 						<div class="team-person-modal-h4">
-							<img src="img/mail-p.svg"/>
+							<img src="{{ asset('build/images/mail-p.svg') }}"/>
 							<h4>jan.kowalski@example.com</h4>
 						</div>
 
 						<div class="team-person-modal-h4">
-							<img src="img/facebook-p.svg"/>
+							<img src="{{ asset('build/images/facebook-p.svg') }}"/>
 							<a href="#">MarszPoZdrowie</a>
 						</div>
 					</div>
@@ -247,10 +217,18 @@
 					<div class="col-12 col-lg-7" style="margin-top: 15px">
 						<div class="row">
 							<div class="col-12">
-								<button class="person-modal-button mobile-tm-10">#SĘDZIA</button>
-								<button class="person-modal-button mobile-tm-10">#TRENER</button>
-								<button class="person-modal-button mobile-tm-10">#INSTRUKTOR</button>
-								<button class="person-modal-button mobile-tm-10">#SZKOLENIOWIEC</button>
+								<button class="person-modal-button mobile-tm-10">
+									#SĘDZIA
+								</button>
+								<button class="person-modal-button mobile-tm-10">
+									#TRENER
+								</button>
+								<button class="person-modal-button mobile-tm-10">
+									#INSTRUKTOR
+								</button>
+								<button class="person-modal-button mobile-tm-10">
+									#SZKOLENIOWIEC
+								</button>
 							</div>
 						</div>
 
@@ -263,7 +241,9 @@
 						<div class="row g-0">
 							<div class="col-12 team-bottom-p p-0 person-modal-right">
 								<img src="{{ asset('build/images/PL.svg') }}" class="team-flag"/>
-								<p class="float-start team-bottom-p" style="margin-right: 15px">Polska</p>
+								<p class="float-start team-bottom-p" style="margin-right: 15px">
+									Polska
+								</p>
 								<p class="float-start">Poznań</p>
 							</div>
 						</div>
@@ -275,33 +255,33 @@
 								<h3>O mnie</h3>
 								<p>
 									Instruktor Szkoleniowiec Nordic Walking i
-																																																																																																																																							                                Fitness Walking, Prezes Nordic Walking Polska,
-																																																																																																																																							                                organizacji działającej pod patronatem twórcy
-																																																																																																																																							                                Nordic Walking- Marco Kantanevy.
+									                                Fitness Walking, Prezes Nordic Walking Polska,
+									                                organizacji działającej pod patronatem twórcy
+									                                Nordic Walking- Marco Kantanevy.
 								</p>
 
 								<p>
 									Jego organizacja zrzesza pionierów i najbardziej
-																																																																																																																																							                                doświadczonych trenerów Nordic Walking. W ciągu
-																																																																																																																																							                                6 lat wyszkolili ponad 3000 Instruktorów oraz
-																																																																																																																																							                                Sędziów Nordic Walking w Polsce i Europie.
-																																																																																																																																							                                Organizator jednego z największych cykli zawodów
-																																																																																																																																							                                w Polsce- Korona Polski- Puchar Polski
-																																																																																																																																							                                organizacji NWPL, organizator Mistrzostw Świata
-																																																																																																																																							                                w Nordic Walking w 2018 roku w Polsce, Mosina,
-																																																																																																																																							                                twórca programów treningowych na świeżym
+									                                doświadczonych trenerów Nordic Walking. W ciągu
+									                                6 lat wyszkolili ponad 3000 Instruktorów oraz
+									                                Sędziów Nordic Walking w Polsce i Europie.
+									                                Organizator jednego z największych cykli zawodów
+									                                w Polsce- Korona Polski- Puchar Polski
+									                                organizacji NWPL, organizator Mistrzostw Świata
+									                                w Nordic Walking w 2018 roku w Polsce, Mosina,
+									                                twórca programów treningowych na świeżym
 								</p>
 
 								<p>
 									Jego organizacja zrzesza pionierów i najbardziej
-																																																																																																																																							                                doświadczonych trenerów Nordic Walking. W ciągu
-																																																																																																																																							                                6 lat wyszkolili ponad 3000 Instruktorów oraz
-																																																																																																																																							                                Sędziów Nordic Walking w Polsce i Europie.
-																																																																																																																																							                                Organizator jednego z największych cykli zawodów
-																																																																																																																																							                                w Polsce- Korona Polski- Puchar Polski
-																																																																																																																																							                                organizacji NWPL, organizator Mistrzostw Świata
-																																																																																																																																							                                w Nordic Walking w 2018 roku w Polsce, Mosina,
-																																																																																																																																							                                twórca programów treningowych na świeżym
+									                                doświadczonych trenerów Nordic Walking. W ciągu
+									                                6 lat wyszkolili ponad 3000 Instruktorów oraz
+									                                Sędziów Nordic Walking w Polsce i Europie.
+									                                Organizator jednego z największych cykli zawodów
+									                                w Polsce- Korona Polski- Puchar Polski
+									                                organizacji NWPL, organizator Mistrzostw Świata
+									                                w Nordic Walking w 2018 roku w Polsce, Mosina,
+									                                twórca programów treningowych na świeżym
 								</p>
 							</div>
 						</div>
@@ -335,7 +315,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -377,7 +357,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -419,7 +399,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -461,7 +441,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																																	                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -515,7 +495,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -557,7 +537,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -599,7 +579,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -641,7 +621,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -695,7 +675,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -737,7 +717,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -779,7 +759,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -821,7 +801,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																																								                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -875,7 +855,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -917,7 +897,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -959,7 +939,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -1001,7 +981,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -1055,7 +1035,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -1097,7 +1077,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -1139,7 +1119,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
@@ -1181,7 +1161,7 @@
 								<h3>Aleksander Zlotopolański</h3>
 								<p>
 									Zostań instruktorem najdynamiczniej rozwijającej
-																																																															                        się aktywności na świecie.
+									                                się aktywności na świecie.
 								</p>
 							</div>
 
