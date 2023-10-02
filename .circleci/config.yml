@@ -1,0 +1,31 @@
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: circleci/php:7.4
+      - image: circleci/mysql:5.7
+      - image: circleci/redis:5.0
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install Dependencies
+          command: |
+            docker-compose -f docker-compose.ci.yml up -d
+            docker-compose exec app composer install --no-progress --no-interaction
+            docker-compose exec app bin/console doctrine:migrations:migrate --no-interaction
+            docker-compose exec app bin/console cache:warmup
+      - run:
+          name: Run Tests
+          command: docker-compose exec app bin/phpunit
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
