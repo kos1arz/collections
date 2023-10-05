@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+{% block title %}Partnerstwo
+{% endblock %}
+{%block headerBaner %}
+	{% include 'partnership/headerBaner.html.twig' %}
+{% endblock
+%}
+{%block content %}
+
+
+	<div class="container" style="margin-top:35px;">
+
+		<div class="row">
+
+			<div class="col-12 col-lg-6">
+
+				<img class="section-img" src="{{ asset('build/images/img-1.png') }}">
+
+			</div>
+
+			<div class=" col-12 col-lg-4 offset-lg-1 d-flex align-items-center">
+
+				<div style="margin-top:25px;">
+
+					<h2>Organizacja ONWF</h2>
+
+					<p>Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Sapien nec sagittis aliquam malesuada bibendum
+																																																            arcu. Et ligula ullamcorper malesuada proin libero nunc. Mauris in aliquam sem fringilla ut morbi.</p>
+
+					<p>Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Sapien nec sagittis aliquam malesuada bibendum
+																																																            arcu. Et ligula ullamcorper malesuada proin libero nunc. Mauris in aliquam sem fringilla ut morbi.</p>
+
+					<br>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container" style="margin-top:35px;">
+		<div class="row">
+			<div class="col-12 alert-cont-2">
+				<p>Umiejętności instruktarzu oraz prowadzenia ciekawych zajęć Nordic Walking, bogatych w różnorodne formy
+																																			          treningu i zabawy z kijami to w dzisiejszych czasach standardowa umiejętność wymagana od pracodawców strefy
+																																			          wellness, placówek sportowych, medycznych, szkół, prywatnych firm czy u indywidualnego klienta. Instruktorzy
+																																			          posiadający taką wiedzę zdobytą pod okiem fachowców są dużo lepiej postrzegani na rynku pracy, jak i podczas
+																																			          zajęć prowadzonych na własną rękę.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="margin-top:45px;">
+		<div class="row">
+			<div class="col-12">
+				<h2>Nasi partnetrzy</h2>
+				<p>Mamy naszych przedstawicieli w wielu krajach. Poznaj ich i do nich dołącz.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="margin-top:45px;">
+		<div class="row">
+			<div class="col-12 col-lg-8 offset-lg-2">
+				<h2>Zainteresowany?</h2>
+				<p>Sprawdź ofertę cenową a następnie skontaktuj się z nami</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-12 col-lg-8 offset-lg-2">
+
+				<div class="row">
+
+					<div class="col-12 col-lg-6">
+
+						<div class="after-team-h4">
+							<img src="{{ asset('build/images/list-5.svg') }}">
+							<h4>200 Euro opłaty wstępnej</h4>
+						</div>
+
+					</div>
+
+					<div class="col-12 col-lg-6">
+
+						<div class="after-team-h4">
+							<img src="{{ asset('build/images/ffff.png') }}">
+							<h4>Przedstawiciele krajowi</h4>
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container" style="margin-top:20px;padding-bottom:25px">
+		<div class="row">
+			<div class="col-12 col-lg-8 offset-lg-2">
+				<div class="row contact-text-wrap">
+
+					<div class="col-12">
+						<h3>Skontaktuj się z nami</h3>
+						<p>Zainteresowany współpracą? Napisz do nas prywatną wiadomość a my odpowiemy najszybciej jak się tylko da.
+						</p>
+					</div>
+
+					<div class="col-12">
+
+						<div class="row">
+
+							<div class="col-12 col-lg-6" style="margin-top:20px;">
+
+								<input type="TEXT" class="form" id="name" name="name" placeholder="IMIĘ">
+
+							</div>
+
+							<div class="col-12 col-lg-6" style="margin-top:20px;">
+
+								<input type="email" class="form mobile-tm-10" id="email" name="email" placeholder="ADRES EMAIL">
+
+							</div>
+
+							<div class="col-12 col-lg-6" style="margin-top:20px;">
+
+								<input type="TEXT" class="form" id="phone" name="phone" placeholder="TELEFON">
+
+							</div>
+
+							<div class="col-12 col-lg-6" style="margin-top:20px;">
+								<select class="option-drop-down">
+									<option value="">PARTNERSTWO</option>
+									<option value="1">Instruktor Nordic Walking</option>
+									<option value="2">Instruktor Nordic Walking</option>
+									<option value="3">Instruktor Nordic Walking</option>
+									<option value="4">Instruktor Nordic Walking</option>
+									<option value="5">Instruktor Nordic Walking</option>
+								</select>
+							</div>
+
+							<div class="col-12 textarea">
+
+								<textarea rows="4" cols="50" class="email-text" id="message" name="message" placeholder="WIADOMOŚĆ"></textarea>
+
+								<script>
+									const textarea = document.getElementById('message');
+
+textarea.value = '';
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', function handleClick() {
+console.log(textarea.value);
+
+textarea.value = '';
+});
+								</script>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-12 col-lg-6 nopad-r">
+						<div class="accept-button">
+							<div class="radio-div-2">
+								<label class="radio-in-accept" style="margin-top:15px;">
+									<input type="checkbox" name="radio">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<span class="accept-text-3" style="padding-top:15px;">Akceptuję
+								<a href="#">Regulamin</a>
+								i
+								<a href="#">Politykę Prywatności</a>
+								*</span>
+
+						</div>
+
+					</div>
+
+					<div class="col-12 col-lg-6">
+
+						<input type="submit" value="WYŚLIJ WIADONOŚĆ" class="blue-button float-right" style="border:none;margin-top:15px;">
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+{% endblock %}

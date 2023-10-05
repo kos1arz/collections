@@ -1,0 +1,562 @@
+{% extends 'base.html.twig' %}
+{% block title %}Lista zawodów
+{% endblock %}
+{%block headerBaner %}
+	{% include 'competition/headerBaner.html.twig' %}
+{% endblock
+%}
+{%block content %}
+
+	<div class="container">
+		<div class="row search-div-2">
+			<div class="col-12 col-lg-9">
+
+				<input type="TEXT" class="form-search" id="name" name="name" placeholder="Znajdź interesujące Ciebie zawody po nazwie lub skorzystaj z filtrów poniżej">
+
+			</div>
+
+			<div class="col-12 col-lg-3 mobile-tm-10">
+				<a href="#" class="blue-button">SZUKAJ</a>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="margin-top:100px;">
+
+		<div class="row">
+			<div class="col-12">
+				<p>Wybierz rodzaj zawodów:</p>
+				<button class="competition-button mobile-tm-10">WSZYSTKIE</button>
+				<button class="competition-button-2 mobile-tm-10">MISTRZOSTWA ŚWIATA</button>
+				<button class="competition-button-3 mobile-tm-10">ZAWODY MIĘDZYNARODOWE</button>
+				<button class="competition-button-4 mobile-tm-10">MISTRZOSTWA KRAJOWE</button>
+				<button class="competition-button-5 mobile-tm-10">MISTRZOSTWA KRAJOWE</button>
+				<button class="competition-button-6 mobile-tm-10">INNE</button>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container" style="margin-top:50px;">
+
+		<div class="row">
+
+			<div class="col-12 col-lg-3" style="margin-BOTTOM:15px;">
+				<p>Wybierz Państwo</p>
+				<select class="option-drop-down">
+					<option value="">POLSKA</option>
+					<option value="2">NIEMCY</option>
+					<option value="3">WIELKA BRYTANIA</option>
+				</select>
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-BOTTOM:15px;">
+				<p>Wybierz miasto</p>
+				<select class="option-drop-down">
+					<option value="">WARSZAWA</option>
+					<option value="2">POZNAŃ</option>
+					<option value="3">SIEMIANOWICE ŚLĄSKIE</option>
+				</select>
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-BOTTOM:15px;">
+				<p>Miesiąc</p>
+				<select class="option-drop-down-calendar">
+					<option value="">WYBIERZ MIESIĄC</option>
+					<option value="1">Styczeń</option>
+					<option value="2">Luty</option>
+					<option value="3">Marzec</option>
+					<option value="4">Kwiecień</option>
+					<option value="5">Maj</option>
+				</select>
+			</div>
+
+			<div class="col-12 col-lg-3" style="margin-top: 37px;">
+				<a href="#" class="blue-button d-flex justify-content-center">SZUKAJ ZAWODÓW</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="container" style="margin-top:35px;">
+		<div class="row">
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag1">
+								Mistrzostwa świata
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag2">
+								Zawody międzynarodowe
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag3">
+								Mistrzostwa krajowe
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag4">
+								Puchar krajowy
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag1">
+								Mistrzostwa świata
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag5">
+								Inne
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag1">
+								Mistrzostwa świata
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6 competition-top-marg">
+				<div class="row nomarg competition-wrap">
+					<div class="col-12 col-lg-5 nopad">
+
+
+						<div class="competition-image-tags">
+
+
+							<div class="competition-image-tag1">
+								Mistrzostwa świata
+							</div>
+
+						</div>
+
+						<img class="competition-img" src="{{ asset('build/images/img-1.png') }}">
+
+					</div>
+
+
+					<div class="col-12 col-lg-7">
+						<div class="row">
+
+							<div class="col-12">
+								<img src="{{ asset('build/images/PL.svg') }}" class="competition-flag">
+								<h4>POLSKA, WARSZAWA</h4>
+							</div>
+
+							<div class="col-12">
+								<h3>Stare Babice 2023</h3>
+							</div>
+
+							<div class="col-12">
+
+								<p class="competition-clock">17 Grudnia 2023, 8:00</p>
+								<p class="competition-users">6 235 uczestników</p>
+
+							</div>
+
+							<div class="col-12">
+
+								<button class="competition-button-right float-right">ZAPISZ SIĘ</button>
+								<button class="competition-button-left float-right">WIĘCEJ INFORMACJI</button>
+
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-12">
+
+				<div class="row">
+
+					<div class="col-12 col-lg-6 d-flex justify-content-start">
+						<div class="pagination">
+							Pokaż na stronie:
+							<span aria-current="page" class="page-numbers current">15</span>
+							<a class="page-numbers" href="#">30</a>
+							<a class="page-numbers" href="#">45</a>
+
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6 d-flex justify-content-end">
+						<div class="pagination">
+							<a class="prev page-numbers" href="#">« Poprzednie</a>
+							<a class="page-numbers" href="#">1</a>
+							<span aria-current="page" class="page-numbers current">2</span>
+							<a class="page-numbers" href="#">3</a>
+							<a class="page-numbers" href="#">4</a>
+							<a class="next page-numbers" href="#">Następne »</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}
