@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 class RegistrationController extends AbstractController
 {
@@ -20,8 +21,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+        if ($form->isSubmitted() && $form->isValid()) {dd($form->get('plainPassword')->getData());
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -29,9 +29,14 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setEmail($form->get('email')->getData());
+            $user->setEmailCanonical($form->get('email')->getData());
+            $user->setEnabled(true);
+            $user->setCreatedAt(new DateTime());
+            $user->setRoles(['ROLE_USER']);
+
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
             return $this->redirectToRoute('home');
         }

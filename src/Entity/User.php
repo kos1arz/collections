@@ -5,13 +5,14 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`', schema: 'm1249_users')]
 #[UniqueEntity('email')]
-class User implements PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "AUTO")]
@@ -61,7 +62,7 @@ class User implements PasswordAuthenticatedUserInterface
     private ?DateTime $passwordRequestedAt = null;
 
     #[ORM\Column(type: "text", nullable: false)]
-    private string $roles;
+    private string $roles = 'a:0:{}';
 
     #[ORM\Column(type: "decimal", precision: 8, scale: 2, nullable: true, options: ["unsigned" => true])]
     private ?float $budget = null;
@@ -72,7 +73,7 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "datetime", nullable: true)]
     private ?DateTime $credentialsExpireAt = null;
 
-    #[ORM\Column(type: "timestamp", nullable: false, options: ["default" => "CURRENT_TIMESTAMP"])]
+    #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $createdAt = null;
 
     #[ORM\Column(type: "integer", nullable: true, options: ["unsigned" => true])]
@@ -99,13 +100,13 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $facebookAccessToken = null;
 
-    #[ORM\Column(type: "char", length: 1, nullable: true)]
+    #[ORM\Column(type: "string", length: 1, nullable: true)]
     private ?string $createdBy = '0';
 
-    #[ORM\Column(type: "char", length: 1, nullable: true)]
+    #[ORM\Column(type: "string", length: 1, nullable: true)]
     private ?string $agreeMarketing = null;
 
-    #[ORM\Column(type: "char", length: 1, nullable: true)]
+    #[ORM\Column(type: "string", length: 1, nullable: true)]
     private ?string $agreeRules = null;
 
     #[ORM\Column(type: "datetime", nullable: true)]
@@ -120,16 +121,16 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "text", nullable: true)]
     private ?string $aboutMe = null;
 
-    #[ORM\Column(type: "char", length: 1, nullable: false, options: ["default" => '0'])]
+    #[ORM\Column(type: "string", length: 1, nullable: false, options: ["default" => '0'])]
     private string $publishEmailAddress = '0';
 
-    #[ORM\Column(type: "char", length: 1, nullable: false, options: ["default" => '0'])]
+    #[ORM\Column(type: "string", length: 1, nullable: false, options: ["default" => '0'])]
     private string $publishTimetable = '0';
 
     #[ORM\Column(type: "string", length: 64, nullable: true)]
     private ?string $phone = null;
 
-    #[ORM\Column(type: "char", length: 1, nullable: false, options: ["default" => '0'])]
+    #[ORM\Column(type: "string", length: 1, nullable: false, options: ["default" => '0'])]
     private string $publishPhone = '0';
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
@@ -144,13 +145,13 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $slug = null;
 
-    #[ORM\Column(type: "char", length: 1, nullable: false, options: ["default" => '0'])]
+    #[ORM\Column(type: "string", length: 1, nullable: false, options: ["default" => '0'])]
     private string $isTrusted = '0';
 
     #[ORM\Column(type: "string", length: 64, nullable: true)]
     private ?string $identityCardNumber = null;
 
-    #[ORM\Column(type: "int", nullable: true)]
+    #[ORM\Column(type: "integer", nullable: true)]
     private ?int $parentId = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
@@ -162,10 +163,10 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "datetime", nullable: true)]
     private ?\DateTimeInterface $isRefereeAt = null;
 
-    #[ORM\Column(type: "int", nullable: true)]
+    #[ORM\Column(type: "integer", nullable: true)]
     private ?int $idRefereeGrade = null;
 
-    #[ORM\Column(type: "tinyint", options: ["default" => '0'])]
+    #[ORM\Column(type: "boolean", options: ["default" => '0'])]
     private bool $isStaffMember = false;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
@@ -177,10 +178,10 @@ class User implements PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $twitterUrl = null;
 
-    #[ORM\Column(type: "int", nullable: true)]
+    #[ORM\Column(type: "integer", nullable: true)]
     private ?int $countryId = null;
 
-    #[ORM\Column(type: "tinyint", options: ["default" => '0'])]
+    #[ORM\Column(type: "boolean", options: ["default" => '0'])]
     private bool $shallowRemoved = false;
 
     #[ORM\Column(type: "date", nullable: true)]
@@ -342,17 +343,26 @@ class User implements PasswordAuthenticatedUserInterface
     public function setPasswordRequestedAt(?DateTime $passwordRequestedAt): self
     {
         $this->passwordRequestedAt = $passwordRequestedAt;
+
         return $this;
     }
 
-    public function getRoles(): string
+    public function getRoles(): array
     {
-        return $this->roles;
+        $roles = unserialize(preg_replace_callback('!s:\d+:"(.*?)";!s',
+            function($m) {
+                return "s:" . strlen($m[1]) . ':"'.$m[1].'";';
+            }, $this->roles
+        ));
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        $this->roles = serialize($roles);
+
         return $this;
     }
 
@@ -364,6 +374,7 @@ class User implements PasswordAuthenticatedUserInterface
     public function setBudget(?float $budget): self
     {
         $this->budget = $budget;
+
         return $this;
     }
 
@@ -782,6 +793,7 @@ class User implements PasswordAuthenticatedUserInterface
     public function setCountryId(?int $countryId): self
     {
         $this->countryId = $countryId;
+
         return $this;
     }
 
@@ -793,6 +805,7 @@ class User implements PasswordAuthenticatedUserInterface
     public function setShallowRemoved(bool $shallowRemoved): self
     {
         $this->shallowRemoved = $shallowRemoved;
+
         return $this;
     }
 
@@ -804,6 +817,16 @@ class User implements PasswordAuthenticatedUserInterface
     public function setBornDate(?\DateTimeInterface $bornDate): self
     {
         $this->bornDate = $bornDate;
+
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
