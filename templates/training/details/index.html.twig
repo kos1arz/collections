@@ -14,7 +14,7 @@ endblock %} {% block content %}
             <div class="row justify-content-lg-end">
                 <div class="col-12 col-lg-4 d-flex justify-content-end">
                     <p class="price">
-                        360 zł<span class="price-low">560 zł</span>
+                        {{ course.price }} zł {% if course.promotionalPrice %}<span class="price-low">{{ course.promotionalPrice }} zł</span>{% endif %}
                     </p>
                 </div>
                 <div

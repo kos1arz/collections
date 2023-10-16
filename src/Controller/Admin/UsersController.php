@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Form\Admin\UserType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -17,16 +15,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\Admin\Traits\BaseTrait;
 
 class UsersController extends AbstractCrudController
 {
-
-//    #[Route('/admin/users', name: 'app_admin_users_index')]
-//    public function index(AdminContext $context): Response
-//    {
-//        return parent::index($context);
-//    }
-
+    use BaseTrait;
 
     public function __construct(private AdminUrlGenerator $urlGenerator) {
 
@@ -45,12 +38,6 @@ class UsersController extends AbstractCrudController
         ];
     }
 
-    public function configureActions(Actions $actions): Actions
-    {
-        return $actions
-            ->add(Crud::PAGE_INDEX, Action::INDEX);
-
-    }
     public static function getEntityFqcn(): string
     {
         return User::class;

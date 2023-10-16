@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-12">
-                        <h1 class="banner-h1">Instruktor Nordic Walking</h1>
+                        <h1 class="banner-h1">{{ course.name }}</h1>
                         <p>
                             Skorzystaj z naszej zaawansowanej wyszukiwarki<br />aby
                             znaleźć szkolenie, które Ciebie interesuje.
@@ -83,9 +83,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-5">
                                 <p class="price-2 float-left">
-                                    360 zł<span class="price-low-2"
-                                        >560 zł</span
-                                    >
+                                    {{ course.price }} zł{% if course.promotionalPrice %}<span class="price-low-2">{{ course.promotionalPrice }} zł</span>{% endif %}
                                 </p>
                             </div>
 
