@@ -1,0 +1,50 @@
+version: 2.1
+jobs:
+    build:
+        docker:
+            - image: php:8.2-cli
+        
+        steps:
+            - checkout # Pull the source code
+            - run: apt-get update
+            - run: apt-get install -y git
+            - run:
+                        name: Install Composer
+                        command: |
+                            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+                            php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+                            rm composer-setup.php
+                            
+            - run:
+                  name: Install Dependencies
+                  command: |
+                      composer install
+            - run:
+                  name: Set up Environment Variables
+                  command: |
+                      echo "DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db" > .env.test
+
+    deploy:
+        machine:
+            enabled: true
+
+        steps:
+            - checkout # Pull the source code
+            - run:
+                  name: deploy_app
+                  command: ssh marszpozdrowie@s27.mydevil.net "cd domains/test.onwf.org 
+                    && git pull && git checkout main && composer2 install"
+
+
+workflows:
+    version: 2
+    build-deploy:
+        jobs:
+            - build
+            - deploy:
+                  requires:
+                      - build
+                  filters:
+                      branches:
+                          only:
+                              - main

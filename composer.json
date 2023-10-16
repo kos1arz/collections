@@ -27,6 +27,9 @@
         "symfony/yaml": "6.3.*"
     },
     "config": {
+        "github-oauth": {
+            "github.com": "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"
+        },
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
