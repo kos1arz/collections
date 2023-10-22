@@ -28,6 +28,7 @@ class FetchCountriesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $response = $this->httpClient->request('GET', 'https://restcountries.com/v3.1/all');
+        $defaultCountry = ['GBR', 'PLN', 'USA'];
 
         $countriesData = $response->toArray();
 
@@ -52,7 +53,13 @@ class FetchCountriesCommand extends Command
                 $country->setName($countryData['name']['common'] ?? '');
                 $country->setFlag($countryData['flags']['svg'] ?? '');
                 $country->setCca2($countryData['cca2'] ?? '');
-                $country->setCca3($countryData['cca3'] ?? '');
+                $cca3 = $countryData['cca3'] ?? '';
+                $country->setCca3($cca3);
+
+                if(in_array($cca3, $defaultCountry)) {
+                    $country->setActive(true);
+                }
+
                 $country->setCurrency($currency);
                 $this->entityManager->persist($country);
                 $this->entityManager->flush();

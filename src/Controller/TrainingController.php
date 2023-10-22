@@ -22,6 +22,7 @@ class TrainingController extends AbstractController
             $request->query->getInt('page', 1),
             $itemsPerPage
         );
+
         return $this->render('training/list/index.html.twig', [
             'pagination' => $pagination,
             'itemsPerPage' => $itemsPerPage
@@ -32,8 +33,20 @@ class TrainingController extends AbstractController
     public function details(int $id, CourseRepository $courseRepository): Response
     {
         $course = $courseRepository->find($id);
+
+        if (!$course) {
+            return $this->redirectToRoute('training_list');
+        }
+
+        $formatter = new \IntlDateFormatter(
+            'pl_PL',
+            \IntlDateFormatter::LONG,
+            \IntlDateFormatter::SHORT
+        );
+
         return $this->render('training/details/index.html.twig', [
-            'course' => $course
+            'course' => $course,
+            'startDate' => $formatter->format($course->getStartDate()),
         ]);
     }
 }

@@ -27,6 +27,9 @@ class Currency implements EntityBaseInterface, TimestampableInterface
     #[ORM\OneToMany(targetEntity: Country::class, mappedBy: 'currency')]
     private Collection $countries;
 
+    #[ORM\Column(options: ['default' => false])]
+    private bool $active = false;
+
     public function __construct()
     {
         $this->countries = new ArrayCollection();
@@ -65,6 +68,18 @@ class Currency implements EntityBaseInterface, TimestampableInterface
     public function setCode(string $code): self
     {
         $this->code = $code;
+        return $this;
+    }
+
+    public function getActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
         return $this;
     }
 }

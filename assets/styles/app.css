@@ -3737,3 +3737,7 @@ img.person-login-img {
 img.mobile-search-icon-2 {
     width: 20px;
 }
+
+.course-short-description {
+    max-width: 400px;
+}

@@ -41,6 +41,9 @@ class Course implements EntityBaseInterface, TimestampableInterface
     #[ORM\Column(type: "datetime", nullable: true)]
     private ?DateTime $startDate = null;
 
+    #[ORM\Column(type: "json")]
+    private $extraDetails = [];
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -141,6 +144,39 @@ class Course implements EntityBaseInterface, TimestampableInterface
     {
         $this->startDate = $startDate  ;
 
+        return $this;
+    }
+
+    public function setInfo(string $info): self
+    {
+        $this->extraDetails['info'] = $info;
+        return $this;
+    }
+
+    public function getInfo(): ?string
+    {
+        return $this->extraDetails['info'] ?? null;
+    }
+
+    public function setList(array $list): self
+    {
+        $this->extraDetails['list'] = $list;
+        return $this;
+    }
+
+    public function getList(): ?array
+    {
+        return $this->extraDetails['list'] ?? null;
+    }
+
+    public function getExtraDetails(): ?array
+    {
+        return $this->extraDetails;
+    }
+
+    public function setExtraDetails(array $extraDetails): self
+    {
+        $this->extraDetails = $extraDetails;
         return $this;
     }
 }

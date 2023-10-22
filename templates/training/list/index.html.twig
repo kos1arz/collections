@@ -90,43 +90,52 @@ headerBaner %}
 
 	<div class="container">
 		<div class="row">
-            {% for course in pagination %}
-                <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
-                    <div class="row nomarg">
-                        <div class="news-card">
-                            <div class="col-12 nopad">
-                                <div class="news-card-image-tags">
-                                    <div class="news-card-image-tag1">Instruktor</div>
+			{% if pagination.getTotalItemCount() > 0 %}
+				{% for course in pagination %}
+					<div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-3 p-lf-8 tm-15">
+						<div class="row nomarg">
+							<div class="news-card">
+								<div class="col-12 nopad">
+									<div class="news-card-image-tags">
+										<div class="news-card-image-tag1">Instruktor</div>
 
-                                    <div class="news-card-image-tag2">Promocja</div>
-                                </div>
+										<div class="news-card-image-tag2">Promocja</div>
+									</div>
 
-                                <img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
-                            </div>
+									<img class="card-img" src="{{ asset('build/images/img-1.png') }}"/>
+								</div>
 
-                            <div class="col-12">
-                                <h3>{{ course.name }}</h3>
-                                <p>
-                                    Zostań instruktorem najdynamiczniej rozwijającej się
-                                                                                                                                                                                                                                aktywności na świecie.
-                                </p>
-                            </div>
+								<div class="col-12">
+									<h3>{{ course.name }}</h3>
+									<p>
+										Zostań instruktorem najdynamiczniej rozwijającej się
+										                                                                                                                                                                                                                                    aktywności na świecie.
+									</p>
+								</div>
 
-                            <div class="col-12">
-                                <p class="card-map-pin">Kraków</p>
-                                <p class="card-clock">17 Grudnia 2023, 8:00</p>
-                            </div>
+								<div class="col-12">
+									<p class="card-map-pin">Kraków</p>
+									<p class="card-clock">17 Grudnia 2023, 8:00</p>
+								</div>
 
-                            <div class="col-12">
-                                <p class="price float-left">
-                                    {{ course.price }} zł {% if course.promotionalPrice %}<span class="price-low">{{ course.promotionalPrice }} zł</span>{% endif %}
-                                </p>
-                                <a href="{{ path('training_details', {'id': course.id}) }}" class="blue-button float-right">KUP SZKOLENIE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+								<div class="col-12">
+									<p class="price float-left">
+										{{ course.price }}
+										zł
+										{% if course.promotionalPrice %}
+											<span class="price-low">{{ course.promotionalPrice }}
+												zł</span>
+										{% endif %}
+									</p>
+									<a href="{{ path('training_details', {'id': course.id}) }}" class="blue-button float-right">KUP SZKOLENIE</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>Brak szkoleń do wyświetlenia.</p>
+			{% endif %}
 		</div>
 	</div>
 
@@ -135,36 +144,37 @@ headerBaner %}
 			<div class="col-12">
 				<div class="row">
 					<div class="col-12 col-lg-6 d-flex justify-content-start">
-                        <div class="pagination">
-                            Pokaż na stronie:
-                            <span aria-current="page" class="page-numbers current">{{ itemsPerPage }}</span>
-                            <a class="page-numbers {{ itemsPerPage == 1 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 1, 'page': 1 }) }}">1</a>
-                            <a class="page-numbers {{ itemsPerPage == 2 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 2, 'page': 1 }) }}">2</a>
-                            <a class="page-numbers {{ itemsPerPage == 3 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 3, 'page': 1 }) }}">3</a>
-                        </div>
+						<div class="pagination">
+							Pokaż na stronie:
+							<span aria-current="page" class="page-numbers current">{{ itemsPerPage }}</span>
+							<a class="page-numbers {{ itemsPerPage == 1 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 1, 'page': 1 }) }}">1</a>
+							<a class="page-numbers {{ itemsPerPage == 2 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 2, 'page': 1 }) }}">2</a>
+							<a class="page-numbers {{ itemsPerPage == 3 ? 'd-none' :'' }}" href="{{ path('training_list', { 'items': 3, 'page': 1 }) }}">3</a>
+						</div>
 					</div>
 
-                    <div class="col-12 col-lg-6 d-flex justify-content-end">
-                        <div class="pagination">
-                            {# Poprzednia strona #}
-                            {% if pagination.currentPageNumber > 1 %}
-                                <a class="prev page-numbers" href="{{ path('training_list', {'page': pagination.currentPageNumber - 1, 'items': itemsPerPage }) }}">« Poprzednie</a>
-                            {% endif %}
-                            {# Wszystkie strony #}
-                            {% for page in 1..pagination.pageCount %}
-                                {% if page == pagination.currentPageNumber %}
-                                    <span aria-current="page" class="page-numbers current">{{ page }}</span>
-                                {% else %}
-                                    <a class="page-numbers" href="{{ path('training_list', {'page': page, 'items': itemsPerPage }) }}">{{ page }}</a>
-                                {% endif %}
-                            {% endfor %}
+					<div class="col-12 col-lg-6 d-flex justify-content-end">
+						<div
+							class="pagination">
+							{# Poprzednia strona #}
+							{% if pagination.currentPageNumber > 1 %}
+								<a class="prev page-numbers" href="{{ path('training_list', {'page': pagination.currentPageNumber - 1, 'items': itemsPerPage }) }}">« Poprzednie</a>
+							{% endif %}
+							{# Wszystkie strony #}
+							{% for page in 1..pagination.pageCount %}
+								{% if page == pagination.currentPageNumber %}
+									<span aria-current="page" class="page-numbers current">{{ page }}</span>
+								{% else %}
+									<a class="page-numbers" href="{{ path('training_list', {'page': page, 'items': itemsPerPage }) }}">{{ page }}</a>
+								{% endif %}
+							{% endfor %}
 
-                            {# Następna strona #}
-                            {% if pagination.currentPageNumber < pagination.pageCount %}
-                                <a class="next page-numbers" href="{{ path('training_list', {'page': pagination.currentPageNumber + 1, 'items': itemsPerPage }) }}">Następne »</a>
-                            {% endif %}
-                        </div>
-                    </div>
+							{# Następna strona #}
+							{% if pagination.currentPageNumber < pagination.pageCount %}
+								<a class="next page-numbers" href="{{ path('training_list', {'page': pagination.currentPageNumber + 1, 'items': itemsPerPage }) }}">Następne »</a>
+							{% endif %}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

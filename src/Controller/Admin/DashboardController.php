@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Course;
 use App\Entity\Country;
+use App\Entity\Currency;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -51,9 +52,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
+
+        yield MenuItem::section('Entities');
+        yield MenuItem::linkToCrud('Courses', 'fas fa-university', Course::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-tags', Category::class);
-        yield MenuItem::linkToCrud('Courses', 'fas fa-pen', Course::class);
-        yield MenuItem::linkToCrud('Countries', 'fas fa-pen', Country::class);
+
+        yield MenuItem::section('Settings');
+        yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
+        yield MenuItem::linkToCrud('Countries', 'fas fa-flag', Country::class);
+        yield MenuItem::linkToCrud('Currency', 'fas fa-coins', Currency::class);
     }
 }
