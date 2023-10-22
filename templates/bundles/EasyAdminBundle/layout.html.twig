@@ -1,6 +1,5 @@
 {# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
 {% trans_default_domain ea.i18n.translationDomain %}
-
 <!DOCTYPE html>
 <html lang="{{ ea.i18n.htmlLocale }}" dir="{{ ea.i18n.textDirection }}" data-turbo="false">
 	<head>
@@ -11,54 +10,38 @@
 			<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 			<meta name="generator" content="EasyAdmin"/>
 		{% endblock head_metas %}
-
 		{% set page_title_block_output %}
 		{% block page_title %}
 			{{ block('content_title') }}
 		{% endblock %}
 		{% endset %}
 		<title>{{ page_title_block_output|striptags|raw }}</title>
-
 		{% block head_stylesheets %}
 			<link rel="stylesheet" href="{{ asset('app.css', ea.assets.defaultAssetPackageName) }}">
 		{% endblock %}
-
 		{% block configured_stylesheets %}
 			{{ include('@EasyAdmin/includes/_css_assets.html.twig', { assets: ea.assets.cssAssets ?? [] }, with_context = false) }}
 			{{ include('@EasyAdmin/includes/_encore_link_tags.html.twig', { assets: ea.assets.webpackEncoreAssets ?? [] }, with_context = false) }}
 		{% endblock %}
-
 		{% block head_favicon %}
 			<link rel="shortcut icon" href="{{ asset(ea.dashboardFaviconPath) }}">
 		{% endblock %}
-
 		{% block head_javascript %}
 			<script src="{{ asset('app.js', ea.assets.defaultAssetPackageName) }}"></script>
 		{% endblock head_javascript %}
-
 		{% block configured_javascripts %}
 			{{ include('@EasyAdmin/includes/_js_assets.html.twig', { assets: ea.assets.jsAssets ?? [] }, with_context = false) }}
 			{{ include('@EasyAdmin/includes/_encore_script_tags.html.twig', { assets: ea.assets.webpackEncoreAssets ?? [] }, with_context = false) }}
 		{% endblock %}
-
 		{% if 'rtl' == ea.i18n.textDirection %}
 			<link rel="stylesheet" href="{{ asset('app.rtl.css', ea.assets.defaultAssetPackageName) }}">
 		{% endif %}
-
 		{% block configured_head_contents %}
 			{% for htmlContent in ea.assets.headContents ?? [] %}
 				{{ htmlContent|raw }}
 			{% endfor %}
 		{% endblock %}
-
-		{% block javascripts %}
-			{{
-            encore_entry_script_tags("app")
-        }}
-		{% endblock %}
-
 	</head>
-
 	{% block body %}
 		<body {% block body_attr %} {% endblock %} id="{% block body_id %}{% endblock %}" class="ea {% block body_class %}{% endblock %}" data-ea-content-width="{{ ea.crud.contentWidth ?? ea.dashboardContentWidth ?? 'normal' }}" data-ea-sidebar-width="{{ ea.crud.sidebarWidth ?? ea.dashboardSidebarWidth ?? 'normal' }}" data-ea-dark-scheme-is-enabled="{{ ea.dashboardHasDarkModeEnabled ? 'true' : 'false' }}">
 			{% block javascript_page_layout %}
@@ -67,12 +50,10 @@
 			{% block javascript_page_color_scheme %}
 				<script src="{{ asset('page-color-scheme.js', ea.assets.defaultAssetPackageName) }}"></script>
 			{% endblock javascript_page_color_scheme %}
-
 			{% block wrapper_wrapper %}
 				{% block flash_messages %}
 					{{ include(ea.templatePath('flash_messages')) }}
 				{% endblock flash_messages %}
-
 				{% set user_menu_avatar %}
 				{% if null == ea.userMenu.avatarUrl %}
 					<span class="user-avatar">
@@ -85,9 +66,7 @@
 					<img class="user-avatar" src="{{ ea.userMenu.avatarUrl }}"/>
 				{% endif %}
 				{% endset %}
-
 				{% set impersonator_permission = constant('Symfony\\Component\\Security\\Core\\Authorization\\Voter\\AuthenticatedVoter::IS_IMPERSONATOR') is defined ? 'IS_IMPERSONATOR' : 'ROLE_PREVIOUS_ADMIN' %}
-
 				{% set user_menu_dropdown %}
 				<ul class="dropdown-menu dropdown-menu-end">
 					<li class="dropdown-user-details">
@@ -97,7 +76,6 @@
 							<span class="user-name">{{ ea.user is null ? 'user.anonymous'|trans(domain = 'EasyAdminBundle') : ea.userMenu.name }}</span>
 						</div>
 					</li>
-
 					{% block user_menu %}
 						{% if ea.userMenu.items|length > 0 %}
 							<li><hr class="dropdown-divider"></li>
@@ -119,20 +97,17 @@
 					{% endblock user_menu %}
 				</ul>
 				{% endset %}
-
 				{% set settings_dropdown %}
 				{% if ea.dashboardLocales or ea.dashboardHasDarkModeEnabled %}
 					<div class="dropdown dropdown-settings">
 						<a class="dropdown-settings-button" type="button" data-bs-toggle="dropdown" data-bs-offset="0,5" aria-expanded="false">
 							<i class="fas fa-gear"></i>
 						</a>
-
 						<ul class="dropdown-menu dropdown-menu-end">
 							{% if ea.dashboardLocales %}
 								<li class="dropdown-header dropdown-locales-label">
 									{{ 'settings.locale'|trans(domain = 'EasyAdminBundle') }}
 								</li>
-
 								{% for localeDto in ea.dashboardLocales %}
 									<li>
 										<a href="{{ ea_url().set('_locale', localeDto.locale) }}" class="dropdown-item{% if app.request.locale == localeDto.locale %} active{% endif %}">
@@ -144,12 +119,10 @@
 									</li>
 								{% endfor %}
 							{% endif %}
-
 							{% if ea.dashboardHasDarkModeEnabled %}
 								{% if ea.dashboardLocales %}
 									<div class="dropdown-divider"></div>
 								{% endif %}
-
 								<li class="dropdown-header dropdown-appearance-label">
 									{{ 'settings.appearance.label'|trans(domain = 'EasyAdminBundle') }}
 								</li>
@@ -176,7 +149,6 @@
 					</div>
 				{% endif %}
 				{% endset %}
-
 				<div class="wrapper">
 					{% block wrapper %}
 						<div class="responsive-header">
@@ -184,7 +156,6 @@
 								<button id="navigation-toggler" type="button" aria-label="Toggle navigation">
 									<i class="fa fa-fw fa-bars"></i>
 								</button>
-
 								<div id="responsive-header-logo" class="text-truncate ms-auto">
 									{% block responsive_header_logo %}
 										<a class="responsive-logo" title="{{ ea.dashboardTitle|striptags }}" href="{{ path(ea.dashboardRouteName) }}">
@@ -192,26 +163,22 @@
 										</a>
 									{% endblock responsive_header_logo %}
 								</div>
-
 								<div class="dropdown user-menu-wrapper {{ is_granted(impersonator_permission) ? 'user-is-impersonated' }} ms-auto">
 									<a
 										class="user-details" type="button" data-bs-toggle="dropdown" data-bs-offset="0,5" aria-expanded="false">
 										{# to make the site design consistent, always display the user avatar in responsive header
-										                                   and hide the user name (because there's no space left) regardless of the user config #}
+																				                                   and hide the user name (because there's no space left) regardless of the user config #}
 										{% if ea.userMenu.avatarDisplayed %}
 											{{ user_menu_avatar }}
 										{% else %}
 											<i class="user-avatar fa fa-fw {{ ea.user is not null ? 'fa-user' : 'fa-user-times' }}"></i>
 										{% endif %}
 									</a>
-
 									{{ user_menu_dropdown }}
 								</div>
-
 								{{ settings_dropdown }}
 							{% endblock responsive_header %}
 						</div>
-
 						<div class="sidebar-wrapper">
 							<aside class="sidebar">
 								{% block sidebar %}
@@ -233,16 +200,13 @@
 											</nav>
 										{% endblock header %}
 									</header>
-
 									{% block main_menu_wrapper %}
 										{{ include(ea.templatePath('main_menu')) }}
 									{% endblock main_menu_wrapper %}
 								{% endblock sidebar %}
-
 								<div id="sidebar-resizer-handler" class="resizer-handler resizer-handler-left"></div>
 							</aside>
 						</div>
-
 						<section class="main-content">
 							{% set has_search = ea.crud is not null and ea.crud.isSearchEnabled %}
 							<aside class="content-top {{ has_search ? 'ea-search-enabled' : 'ea-search-disabled' }}">
@@ -251,7 +215,6 @@
 										<div class="content-search">
 											{% if has_search %}
 												{% block search %}
-
 													<form class="form-action-search" method="get">
 														{% block search_form %}
 															{% block search_form_filters %}
@@ -279,21 +242,17 @@
 																	{% endif %}
 																{% endfor %}
 															{% endblock %}
-
 															<input type="hidden" name="crudAction" value="index">
 															<input type="hidden" name="crudControllerFqcn" value="{{ ea.request.query.get('crudControllerFqcn') }}">
 															<input type="hidden" name="menuIndex" value="{{ ea.request.query.get('menuIndex') }}">
 															<input type="hidden" name="submenuIndex" value="{{ ea.request.query.get('submenuIndex') }}">
 															<input type="hidden" name="page" value="1">
-
 															<div class="form-group">
 																<div class="form-widget">
 																	<i class="fas fa-search content-search-icon"></i>
-
 																	<label class="content-search-label" data-value="{{ app.request.get('query') }}">
 																		<input class="form-control {{ app.request.get('query') is null ? 'is-blank' }}" type="search" name="query" value="{{ app.request.get('query') ?? '' }}" placeholder="{{ t('action.search', ea.i18n.translationParameters, 'EasyAdminBundle')|trans }}" spellcheck="false" autocorrect="off" oninput="this.parentNode.dataset.value=this.value" {% if ea.crud.currentAction == 'index' and ea.crud.autofocusSearch == true %} autofocus="autofocus" {% endif %}>
 																	</label>
-
 																	{% if app.request.get('query') %}
 																		<a href="{{ ea_url().unset('query') }}" class="content-search-reset">
 																			<i class="fas fa-fw fa-times"></i>
@@ -307,7 +266,6 @@
 											{% endif %}
 										</div>
 									{% endblock search_wrapper %}
-
 									{% block header_custom_menu_wrapper %}
 										<div class="navbar-custom-menu">
 											{% block header_custom_menu %}
@@ -318,19 +276,16 @@
 															<span class="user-name">{{ ea.userMenu.name }}</span>
 														{% endif %}
 													</a>
-
 													{{ user_menu_dropdown }}
 												</div>
 											{% endblock header_custom_menu %}
 										</div>
 									{% endblock header_custom_menu_wrapper %}
-
 									{% block settings_dropdown_wrapper %}
 										{{ settings_dropdown }}
 									{% endblock settings_dropdown_wrapper %}
 								{% endblock content_top_header %}
 							</aside>
-
 							<div class="content-wrapper">
 								{% block content %}
 									<article class="content">
@@ -341,7 +296,6 @@
 													<div class="content-header-title">
 														<h1 class="title">
 															{% block content_title %}{% endblock %}
-
 															{% block content_help %}
 																{% if has_help_message %}
 																	<a tabindex="0" class="content-header-help" data-bs-toggle="popover" data-bs-custom-class="ea-content-help-popover" data-bs-animation="true" data-bs-html="true" data-bs-placement="bottom" data-bs-trigger="focus" data-bs-content="{{ ea.crud.helpMessage|trans|e('html_attr') }}">
@@ -351,7 +305,6 @@
 															{% endblock %}
 														</h1>
 													</div>
-
 													{% block page_actions_wrapper %}
 														<div class="page-actions">
 															{% block page_actions %}{% endblock %}
@@ -360,11 +313,9 @@
 												{% endblock content_header %}
 											</section>
 										{% endblock content_header_wrapper %}
-
 										<section id="main" class="content-body">
 											{% block main %}{% endblock %}
 										</section>
-
 										{% block content_footer_wrapper %}
 											{% set content_footer = block('content_footer') is defined ? block('content_footer') : '' %}
 											{% if content_footer is not empty %}
@@ -375,16 +326,13 @@
 										{% endblock %}
 									</article>
 								{% endblock content %}
-
 								<div id="content-resizer-handler" class="resizer-handler resizer-handler-right"></div>
 							</div>
 						</section>
 					{% endblock wrapper %}
 				</div>
 			{% endblock wrapper_wrapper %}
-
 			{% block body_javascript %}{% endblock body_javascript %}
-
 			{% block configured_body_contents %}
 				{% for htmlContent in ea.assets.bodyContents ?? [] %}
 					{{ htmlContent|raw }}

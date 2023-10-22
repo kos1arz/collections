@@ -10,9 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use App\Controller\Admin\Traits\BaseTrait;
-use App\EasyAdmin\Field\TranslationsSimpleField;
 
 class CourseCrudController extends AbstractCrudController
 {

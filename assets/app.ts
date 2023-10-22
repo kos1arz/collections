@@ -20,11 +20,6 @@ import "select2";
 
 import "./js/carousel.ts";
 import "./js/datePicker.ts";
-import { TrixEditor } from "./js/TrixEditor";
 
 // @ts-ignore
 global.$ = global.jQuery = $;
-
-document.addEventListener("DOMContentLoaded", function () {
-  new TrixEditor();
-});

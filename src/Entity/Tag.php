@@ -10,7 +10,8 @@ use App\Entity\Interfaces\EntityBaseInterface;
 
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Tag implements EntityBaseInterface, TimestampableInterface {
+class Tag implements EntityBaseInterface, TimestampableInterface
+{
     use TimestampableTrait;
     use EntityBaseTrait;
 
