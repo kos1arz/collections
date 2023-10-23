@@ -59,7 +59,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Settings');
         yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
-        yield MenuItem::linkToCrud('Countries', 'fas fa-flag', Country::class);
+        yield MenuItem::linkToCrud('Countries', 'fas fa-globe', Country::class);
         yield MenuItem::linkToCrud('Currency', 'fas fa-coins', Currency::class);
     }
 }

@@ -35,16 +35,15 @@ endblock %}
 		</div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-12 alert-cont">
-				<p>
-					Ze względu na wysoką jakoś szkolenia obowiązuje ograniczona
-										                ilość uczestników do ~ 10 osób!
-				</p>
+	{% if course.info %}
+		<div class="container">
+			<div class="row">
+				<div class="col-12 alert-cont">
+					<p>{{ course.info }}</p>
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endif %}
 
 	<div class="container" style="margin-top: 45px">
 		<div class="row">
@@ -74,233 +73,167 @@ endblock %}
 		</div>
 	</div>
 
-	<div class="container" style="margin-top: 65px">
-		<div class="row">
-			<div class="col-12 col-lg-6">
-				<img class="img-fluid mx-auto" src="{{ asset('build/images/Group7609.svg') }}"/>
-			</div>
+	{% if course.isLearningOutcomes() %}
 
-			<div class="col-12 col-lg-6">
-				<div style="margin-top: 25px">
-					<h2>Czego się nauczysz</h2>
-					<p>Zaufaj profesjonalistom</p>
-					<br/>
-					<ul class="course-aproved-list">
-						<li>
-							Zostań instruktorem najdynamiczniej rozwijającej się
-														                        aktywności na świecie!
-						</li>
-						<li>
-							Kształć się pod okiem pionierów Nordic Walking w Polsce
-														                        i dołącz do ponad 3500 profesjonalisów
-						</li>
-						<li>
-							Nasze kursy są rekomendowane przez twórcę Nordic Walking
-														                        - Marko Kantanevę
-						</li>
-						<li>
-							Jedyne w Polsce zaświadczenie Ministerstwa Edukacji
-														                        Narodowej!
-						</li>
-						<li>
-							Legitymacja Instruktora z poleceniem samego twórcy-
-														                        Marko Kantanevy (jako jedyna organizacja w Polsce
-														                        posiadamy świadectwo jakości i akredytację World
-														                        Original Nordic Walking Federation)
-						</li>
-						<li>
-							Tylko z nami dołączysz do największej Ogólnopolskiej
-														                        bazy Instruktorów www.znajdzinstruktora.pl
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container" style="margin-top: 65px">
-		<div class="row">
-			<div class="col-12 col-lg-6 d-flex align-items-center">
-				<div style="margin-top: 25px">
-					<h2>Zaufaj profesjonalistom</h2>
-					<p>
-						Specjalistyczny Kurs Instruktorski Nordic Walking składa się
-												                    z dwóch części: teoretycznej i praktycznej. Zakończony jest
-												                    otrzymaniem legitymacji Instruktora Nordic Walking,
-												                    nadającego uprawnienia zawodowe (zgodnie z ustawą o sporcie
-												                    i rozporządzeniu Ministra Pracy i Polityki Społczenej).Kurs
-												                    obejmuje pełen zakres metodyki i dydaktyki nauczania
-												                    techniki Nordic Walking. Bazujemy nie tylko na ogólnych
-												                    wskazaniach organizacji międzynarodowych.
-					</p>
-					<br/>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-6">
-				<img class="img-fluid mx-auto" src="{{ asset('build/images/img-1.png') }}"/>
-			</div>
-		</div>
-	</div>
-
-	<div class="container" style="margin-top: 35px">
-		<div class="row">
-			<div class="col-12 alert-cont-2">
-				<p>
-					Umiejętności instruktarzu oraz prowadzenia ciekawych zajęć
-										                Nordic Walking, bogatych w różnorodne formy treningu i zabawy z
-										                kijami to w dzisiejszych czasach standardowa umiejętność
-										                wymagana od pracodawców strefy wellness, placówek sportowych,
-										                medycznych, szkół, prywatnych firm czy u indywidualnego klienta.
-										                Instruktorzy posiadający taką wiedzę zdobytą pod okiem fachowców
-										                są dużo lepiej postrzegani na rynku pracy, jak i podczas zajęć
-										                prowadzonych na własną rękę.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-12">
-				<h2>Program szkolenia</h2>
-				<p>Poznaj program szkolenia części praktycznej i teoretycznej</p>
-			</div>
-		</div>
-		<div class="row news-cards-margin course-panels">
-			<div class="col-12 pb-3">
+		{% if course.isLearningOutcomesFirstBox() %}
+			<div class="container" style="margin-top: 65px">
 				<div class="row">
-					<div class="col-12 col-lg-10 offset-lg-1">
-						<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<button class="tab-button2 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home2" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-									<span class="course-tab-button-text">Część teoretyczna</span>
-								</button>
-							</li>
-							<li class="nav-item" role="presentation">
-								<button class="tab-button2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-									<span class="course-tab-button-text">Część praktyczna</span>
-								</button>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="tab-content" id="pills-tabContent">
-					<div class="tab-pane fade show active" id="pills-home2" role="tabpanel" aria-labelledby="pills-home-tab">
-						<div class="row">
-							<div class="col-12 col-lg-8 offset-lg-2">
-								<h3>
-									Na szkoleniu w części teoretycznej omawiana jest
-																		                                szczegółowo między innymi prawidłowa technika
-																		                                oraz poszczególne jej elementy w odniesieniu do
-																		                                jednostki motorycznej naszego ciała. Dodatkowo
-																		                                poruszamy najważniejsze informacje dotyczące:
-								</h3>
-								<ul class="course-aproved-list">
-									<li>
-										Zostań instruktorem najdynamiczniej
-																				                                    rozwijającej się aktywności na świecie!
-									</li>
-									<li>
-										Kształć się pod okiem pionierów Nordic
-																				                                    Walking w Polsce i dołącz do ponad 3500
-																				                                    profesjonalisów
-									</li>
-									<li>
-										Nasze kursy są rekomendowane przez twórcę
-																				                                    Nordic Walking - Marko Kantanevę
-									</li>
-									<li>
-										Jedyne w Polsce zaświadczenie Ministerstwa
-																				                                    Edukacji Narodowej!
-									</li>
-									<li>
-										Legitymacja Instruktora z poleceniem samego
-																				                                    twórcy- Marko Kantanevy (jako jedyna
-																				                                    organizacja w Polsce posiadamy świadectwo
-																				                                    jakości i akredytację World Original Nordic
-																				                                    Walking Federation)
-									</li>
-									<li>
-										Tylko z nami dołączysz do największej
-																				                                    Ogólnopolskiej bazy Instruktorów
-																				                                    www.znajdzinstruktora.pl
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-12 alert-cont">
-								<p>
-									Część teoretyczna może być realizowana online
-																		                                przez platformę zoom dzień lub dwa dni przed
-																		                                oficjalną datą części praktycznej kursu.
-								</p>
-							</div>
-						</div>
+					<div class="col-12 col-lg-6">
+						<img class="img-fluid mx-auto" src="{{ asset('build/images/Group7609.svg') }}"/>
 					</div>
 
-					<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-profile-tab">
-						<div class="row">
-							<div class="col-12 col-lg-8 offset-lg-2">
-								<h3>
-									2 Na szkoleniu w części teoretycznej omawiana
-																		                                jest szczegółowo między innymi prawidłowa
-																		                                technika oraz poszczególne jej elementy w
-																		                                odniesieniu do jednostki motorycznej naszego
-																		                                ciała. Dodatkowo poruszamy najważniejsze
-																		                                informacje dotyczące:
-								</h3>
-								<ul class="course-aproved-list">
-									<li>
-										Zostań instruktorem najdynamiczniej
-																				                                    rozwijającej się aktywności na świecie!
-									</li>
-									<li>
-										Kształć się pod okiem pionierów Nordic
-																				                                    Walking w Polsce i dołącz do ponad 3500
-																				                                    profesjonalisów
-									</li>
-									<li>
-										Nasze kursy są rekomendowane przez twórcę
-																				                                    Nordic Walking - Marko Kantanevę
-									</li>
-									<li>
-										Jedyne w Polsce zaświadczenie Ministerstwa
-																				                                    Edukacji Narodowej!
-									</li>
-									<li>
-										Legitymacja Instruktora z poleceniem samego
-																				                                    twórcy- Marko Kantanevy (jako jedyna
-																				                                    organizacja w Polsce posiadamy świadectwo
-																				                                    jakości i akredytację World Original Nordic
-																				                                    Walking Federation)
-									</li>
-									<li>
-										Tylko z nami dołączysz do największej
-																				                                    Ogólnopolskiej bazy Instruktorów
-																				                                    www.znajdzinstruktora.pl
-									</li>
-								</ul>
-							</div>
-						</div>
+					<div class="col-12 col-lg-6">
+						<div style="margin-top: 25px">
+							{% if course.learningOutcomes['firstBox']['title'] is defined and course.learningOutcomes['firstBox']['title']|length > 0 %}
+								<h2>{{ course.learningOutcomes['firstBox']['title'] }}</h2>
+							{% endif %}
 
-						<div class="row">
-							<div class="col-12 alert-cont">
-								<p>
-									Część teoretyczna może być realizowana online
-																		                                przez platformę zoom dzień lub dwa dni przed
-																		                                oficjalną datą części praktycznej kursu.
-								</p>
-							</div>
+							{% if course.learningOutcomes['firstBox']['description'] is defined and course.learningOutcomes['firstBox']['description']|length > 0 %}
+								<p>{{ course.learningOutcomes['firstBox']['description'] }}</p>
+							{% endif %}
+
+							<br/>
+
+							{% if course.learningOutcomes['firstBox']['list'] is defined and course.learningOutcomes['firstBox']['list']|length > 0 %}
+								<ul class="course-aproved-list">
+									{% for item in course.learningOutcomes['firstBox']['list'] %}
+										<li>{{ item }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
 						</div>
 					</div>
 				</div>
 			</div>
+		{% endif %}
+
+		{% if course.isLearningOutcomesSecondBox() %}
+			<div class="container" style="margin-top: 65px">
+				<div class="row">
+					<div class="col-12 col-lg-6 d-flex align-items-center">
+						<div style="margin-top: 25px">
+							{% if course.learningOutcomes['secondBox']['title'] is defined and course.learningOutcomes['secondBox']['title']|length > 0 %}
+								<h2>{{ course.learningOutcomes['secondBox']['title'] }}</h2>
+							{% endif %}
+
+							{% if course.learningOutcomes['secondBox']['description'] is defined and course.learningOutcomes['secondBox']['description']|length > 0 %}
+								<p>{{ course.learningOutcomes['secondBox']['description'] }}</p>
+							{% endif %}
+
+							<br/>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-6">
+						<img class="img-fluid mx-auto" src="{{ asset('build/images/img-1.png') }}"/>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if course.learningOutcomes['info'] is defined and course.learningOutcomes['info']|length > 0 %}
+			<div class="container" style="margin-top: 35px">
+				<div class="row">
+					<div class="col-12 alert-cont-2">
+						<p>{{ course.learningOutcomes['info'] }}</p>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endif %}
+
+	{% if course.isTrainingPrograms() %}
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-12">
+					<h2>Program szkolenia</h2>
+					{% if course.trainingPrograms['title'] is defined and course.trainingPrograms['title']|length > 0 %}
+						<p>{{ course.trainingPrograms['title'] }}</p>
+					{% endif %}
+				</div>
+			</div>
+			<div class="row news-cards-margin course-panels">
+				<div class="col-12 pb-3">
+					<div class="row">
+						<div class="col-12 col-lg-10 offset-lg-1">
+							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+								{% if course.isTrainingProgramsTheoretical() %}
+									<li class="nav-item" role="presentation">
+										<button class="tab-button2 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home2" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+											<span class="course-tab-button-text">Część teoretyczna</span>
+										</button>
+									</li>
+								{% endif %}
+								{% if course.isTrainingProgramsPractical() %}
+									<li class="nav-item" role="presentation">
+										<button class="tab-button2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+											<span class="course-tab-button-text">Część praktyczna</span>
+										</button>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="tab-content" id="pills-tabContent">
+						{% if course.isTrainingProgramsTheoretical() %}
+							<div class="tab-pane fade show active" id="pills-home2" role="tabpanel" aria-labelledby="pills-home-tab">
+								<div class="row">
+									<div class="col-12 col-lg-8 offset-lg-2">
+										{% if course.trainingPrograms['theoretical']['description'] is defined and course.trainingPrograms['theoretical']['description']|length > 0 %}
+											<h3>{{ course.trainingPrograms['theoretical']['description'] }}</h3>
+										{% endif %}
+										{% if course.trainingPrograms['theoretical']['list'] is defined and course.trainingPrograms['theoretical']['list']|length > 0 %}
+											<ul class="course-aproved-list">
+												{% for item in course.trainingPrograms['theoretical']['list'] %}
+													<li>{{ item }}</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+									</div>
+								</div>
+
+								{% if course.trainingPrograms['theoretical']['info'] is defined and course.trainingPrograms['theoretical']['info']|length > 0 %}
+									<div class="row">
+										<div class="col-12 alert-cont">
+											<p>{{ course.trainingPrograms['theoretical']['info'] }}</p>
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						{% endif %}
+						{% if course.isTrainingProgramsPractical() %}
+							<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-profile-tab">
+								<div class="row">
+									<div class="col-12 col-lg-8 offset-lg-2">
+										{% if course.trainingPrograms['practical']['description'] is defined and course.trainingPrograms['practical']['description']|length > 0 %}
+											<h3>{{ course.trainingPrograms['practical']['description'] }}</h3>
+										{% endif %}
+										{% if course.trainingPrograms['practical']['list'] is defined and course.trainingPrograms['practical']['list']|length > 0 %}
+											<ul class="course-aproved-list">
+												{% for item in course.trainingPrograms['practical']['list'] %}
+													<li>{{ item }}</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+									</div>
+								</div>
+
+								{% if course.trainingPrograms['practical']['info'] is defined and course.trainingPrograms['practical']['info']|length > 0 %}
+									<div class="row">
+										<div class="col-12 alert-cont">
+											<p>{{ course.trainingPrograms['practical']['info'] }}</p>
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
+	{% endif %}
 
 	{% if course.extraDetails is defined and course.extraDetails|length > 0 %}
 		<div class="container" style="margin-top: 35px">

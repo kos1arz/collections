@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Course;
+use App\Entity\Currency;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use App\Entity\Traits\TimestampableTrait;
 use App\Entity\Traits\EntityBaseTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use App\Entity\Interfaces\TimestampableInterface;
 use App\Entity\Interfaces\EntityBaseInterface;
 use App\Repository\CountryRepository;
@@ -15,6 +19,12 @@ class Country implements EntityBaseInterface, TimestampableInterface
 {
     use TimestampableTrait;
     use EntityBaseTrait;
+
+    #[ORM\ManyToOne(targetEntity: Currency::class, inversedBy: 'countries')]
+    private Currency $currency;
+
+    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'country')]
+    private Collection $courses;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string  $flag = null;
@@ -28,8 +38,15 @@ class Country implements EntityBaseInterface, TimestampableInterface
     #[ORM\Column(options: ['default' => false])]
     private bool $active = false;
 
-    #[ORM\ManyToOne(targetEntity: Currency::class, inversedBy: 'countries')]
-    private Currency $currency;
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 
     public function getFlag(): ?string
     {
@@ -87,6 +104,35 @@ class Country implements EntityBaseInterface, TimestampableInterface
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Course[]
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): self
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses[] = $course;
+            $course->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): self
+    {
+        if ($this->courses->removeElement($course)) {
+            if ($course->getCountry() === $this) {
+                $course->setCountry(null);
+            }
+        }
 
         return $this;
     }

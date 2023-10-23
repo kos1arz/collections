@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Country;
+use App\Entity\Course;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampableTrait;
 use App\Entity\Traits\EntityBaseTrait;
@@ -18,26 +20,58 @@ class Currency implements EntityBaseInterface, TimestampableInterface
     use TimestampableTrait;
     use EntityBaseTrait;
 
+    #[ORM\OneToMany(targetEntity: Country::class, mappedBy: 'currency')]
+    private Collection $countries;
+
+    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'currency')]
+    private Collection $courses;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string  $symbol = null;
 
     #[ORM\Column(length: 10, unique: true)]
     private string $code;
 
-    #[ORM\OneToMany(targetEntity: Country::class, mappedBy: 'currency')]
-    private Collection $countries;
-
     #[ORM\Column(options: ['default' => false])]
     private bool $active = false;
 
     public function __construct()
     {
+        $this->courses = new ArrayCollection();
         $this->countries = new ArrayCollection();
     }
 
     public function __toString(): string
     {
-        return $this->name;
+        return $this->name . ' (' . $this->symbol . ')';
+    }
+    /**
+     * @return Collection|Course[]
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): self
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses[] = $course;
+            $course->setCurrency($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): self
+    {
+        if ($this->courses->removeElement($course)) {
+            if ($course->getCurrency() === $this) {
+                $course->setCurrency(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
