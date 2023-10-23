@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use App\Controller\Admin\Traits\BaseTrait;
 
 class CourseCrudController extends AbstractCrudController
@@ -23,8 +24,22 @@ class CourseCrudController extends AbstractCrudController
         return Course::class;
     }
 
+    private function getCurrency(string $pageName): string
+    {
+        $currencyCode = 'PLN';
+        $course = $this->getContext()->getEntity()->getInstance();
+
+        if(CRUD::PAGE_EDIT === $pageName) {
+            $currencyCode = $course->getCurrency()->getCode();
+        }
+
+        return $currencyCode;
+    }
+
     public function configureFields(string $pageName): iterable
     {
+        $currencyCode = $this->getCurrency($pageName);
+
         return [
             FormField::addTab('Główne'),
                 FormField::addColumn(6),
@@ -48,8 +63,8 @@ class CourseCrudController extends AbstractCrudController
                         ->setQueryBuilder(function ($queryBuilder) {
                             return $queryBuilder->andWhere('entity.active = true');
                         }),
-                    MoneyField::new('price', 'Price')->setCurrency('PLN')->setStoredAsCents(false)->setColumns(6),
-                    MoneyField::new('promotionalPrice', 'Promotional Price')->setCurrency('PLN')->setStoredAsCents(false)->setColumns(6),
+                    MoneyField::new('price', 'Price')->setCurrency($currencyCode)->setStoredAsCents(false)->setColumns(6),
+                    MoneyField::new('promotionalPrice', 'Promotional Price')->setCurrency($currencyCode)->setStoredAsCents(false)->setColumns(6),
 
             FormField::addTab('Czego się nauczysz'),
                 FormField::addColumn(6),

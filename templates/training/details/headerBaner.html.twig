@@ -61,10 +61,10 @@
 							<div class="col-12 col-lg-5">
 								<p class="price-2 float-left">
 									{{ course.price }}
-									zł
+									{{ course.currency.symbol }}
 									{% if course.promotionalPrice %}
 										<span class="price-low-2">{{ course.promotionalPrice }}
-											zł</span>
+											{{ course.currency.symbol }}</span>
 									{% endif %}
 								</p>
 							</div>

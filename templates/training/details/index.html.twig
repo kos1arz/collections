@@ -20,10 +20,10 @@ endblock %}
 					<div class="col-12 col-lg-4 d-flex justify-content-end">
 						<p class="price">
 							{{ course.price }}
-							zł
+							{{ course.currency.symbol }}
 							{% if course.promotionalPrice %}
 								<span class="price-low">{{ course.promotionalPrice }}
-									zł</span>
+									{{ course.currency.symbol }}</span>
 							{% endif %}
 						</p>
 					</div>
