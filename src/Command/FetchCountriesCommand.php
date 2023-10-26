@@ -29,6 +29,7 @@ class FetchCountriesCommand extends Command
     {
         $response = $this->httpClient->request('GET', 'https://restcountries.com/v3.1/all');
         $defaultCountry = ['GBR', 'PLN', 'USA'];
+        $defaultCurrency = ['PLN', 'USD', 'USA'];
 
         $countriesData = $response->toArray();
 
@@ -44,6 +45,9 @@ class FetchCountriesCommand extends Command
                         $currency->setName($currencyData['name'] ?? '');
                         $currency->setSymbol($currencyData['symbol'] ?? '');
                         $currency->setCode($code);
+                        if(in_array($code, $defaultCurrency)) {
+                            $currency->setActive(true);
+                        }
                         $this->entityManager->persist($currency);
                         $this->entityManager->flush();
                     }

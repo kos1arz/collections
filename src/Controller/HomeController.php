@@ -5,9 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-// use Doctrine\ORM\EntityManagerInterface;
-// use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {
@@ -21,18 +19,8 @@ class HomeController extends AbstractController
     // }
 
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        // $user = new User();
-        // $user->setEmail('admin@test.pl');
-        // $user->setRoles(['ROLE_ADMIN']);
-        // $user->setPassword($this->passwordHasher->hashPassword(
-        //     $user,
-        //     'admin'
-        // ));
-        // $this->entityManager->persist($user);
-        // $this->entityManager->flush();
-
         return $this->render('home/index.html.twig');
     }
 }
