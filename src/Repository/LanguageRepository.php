@@ -21,6 +21,11 @@ class LanguageRepository extends ServiceEntityRepository
         parent::__construct($registry, Language::class);
     }
 
+    public function findDefaultLanguage(): ?Language
+    {
+        return $this->findOneBy(['default' => true]);
+    }
+
 //    /**
 //     * @return Language[] Returns an array of Language objects
 //     */

@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Course;
 use App\Entity\Country;
-use App\Entity\Currency;
 use App\Entity\VichFile;
 use App\Entity\Language;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -64,6 +63,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
         yield MenuItem::linkToCrud('Language', 'fa fa-language', Language::class);
         yield MenuItem::linkToCrud('Countries', 'fas fa-globe', Country::class);
-        yield MenuItem::linkToCrud('Currency', 'fas fa-coins', Currency::class);
     }
 }

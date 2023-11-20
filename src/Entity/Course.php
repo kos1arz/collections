@@ -6,20 +6,24 @@ use DateTime;
 use App\Entity\Category;
 use App\Entity\Currency;
 use App\Entity\Country;
+use App\Entity\Language;
+use App\Entity\CourseLanguage;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CourseRepository;
-use App\Entity\Traits\EntityBaseTrait;
+use App\Entity\Traits\IdTrait;
 use App\Entity\Traits\TimestampableTrait;
 use Doctrine\Common\Collections\Collection;
-use App\Entity\Interfaces\EntityBaseInterface;
+use App\Entity\Interfaces\IdInterface;
+use App\Entity\Abstract\ManyLanguagesAbstract;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Entity\Interfaces\TimestampableInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Course implements EntityBaseInterface, TimestampableInterface
+class Course extends ManyLanguagesAbstract implements IdInterface, TimestampableInterface
 {
-    use EntityBaseTrait;
+    use IdTrait;
     use TimestampableTrait;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: "courses")]
@@ -31,8 +35,8 @@ class Course implements EntityBaseInterface, TimestampableInterface
     #[ORM\ManyToOne(targetEntity: Country::class, inversedBy: 'courses')]
     private Country $country;
 
-    #[ORM\Column(type: "boolean", nullable: false)]
-    private $isPublished = 1;
+    #[ORM\OneToMany(targetEntity: CourseLanguage::class, mappedBy: 'course')]
+    private Collection $courseLanguages;
 
     #[ORM\Column(type: "decimal", precision: 10, scale: 2, nullable: true)]
     private $price = null;
@@ -40,28 +44,47 @@ class Course implements EntityBaseInterface, TimestampableInterface
     #[ORM\Column(type: "decimal", precision: 10, scale: 2, nullable: true)]
     private $promotionalPrice = null;
 
-    #[ORM\Column(type: "text", nullable: true)]
-    private ?string $shortDescription = null;
-
     #[ORM\Column(type: "datetime", nullable: true)]
     private ?DateTime $startDate = null;
 
-    #[ORM\Column(type: "json")]
-    private $extraDetails = [];
-
-    #[ORM\Column(type: "json")]
-    private $trainingPrograms = [];
-
-    #[ORM\Column(type: "json")]
-    private $learningOutcomes = [];
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $info;
+    public CourseLanguage $childLanguage;
 
     public function __construct()
     {
+        $this->creatChildLanguage();
+        $this->courseLanguages = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
+
+
+    // ==================================
+
+    public function creatChildLanguage(): void
+    {
+        $this->childLanguage = new CourseLanguage();
+    }
+
+    public function setChildLanguage(object $childLanguage): void
+    {
+        $this->childLanguage = $childLanguage;
+    }
+
+    public function addChildLanguage(): void
+    {
+        $this->addCourseLanguages($this->childLanguage);
+    }
+
+    public function getChildLanguage(): object
+    {
+        return $this->childLanguage;
+    }
+
+    public function setLanguage(Language $language): void
+    {
+        $this->childLanguage->setLanguage($language);
+    }
+
+    // ==================================
 
     /**
      * @return Collection|Category[]
@@ -115,18 +138,6 @@ class Course implements EntityBaseInterface, TimestampableInterface
         return $this;
     }
 
-    public function getIsPublished(): bool
-    {
-        return $this->isPublished;
-    }
-
-    public function setIsPublished(bool $isPublished): self
-    {
-        $this->isPublished = $isPublished;
-
-        return $this;
-    }
-
     public function getPrice(): ?string
     {
         return $this->price;
@@ -151,18 +162,6 @@ class Course implements EntityBaseInterface, TimestampableInterface
         return $this;
     }
 
-    public function getShortDescription(): ?string
-    {
-        return $this->shortDescription ;
-    }
-
-    public function setShortDescription(?string $shortDescription ): self
-    {
-        $this->shortDescription = $shortDescription ;
-
-        return $this;
-    }
-
     public function getStartDate(): ?DateTime
     {
         return $this->startDate  ;
@@ -175,303 +174,31 @@ class Course implements EntityBaseInterface, TimestampableInterface
         return $this;
     }
 
-    public function getExtraDetailsInfo(): ?string
+    /**
+     * @return Collection|CourseLanguage[]
+     */
+    public function getCourseLanguages(): Collection
     {
-        return $this->extraDetails['info'] ?? null;
+        return $this->courseLanguages;
     }
 
-    public function setExtraDetailsInfo(?string $info): self
+    public function addCourseLanguages(CourseLanguage $courseLanguage): self
     {
-        $this->extraDetails['info'] = $info;
+        if (!$this->courseLanguages->contains($courseLanguage)) {
+            $this->courseLanguages[] = $courseLanguage;
+            $courseLanguage->setCourse($this);
+        }
 
         return $this;
     }
 
-    public function getExtraDetailsList(): ?array
+    public function removeCourseLanguages(CourseLanguage $courseLanguage): self
     {
-        return $this->extraDetails['list'] ?? null;
-    }
-
-    public function setExtraDetailsList(array $list): self
-    {
-        $this->extraDetails['list'] = $list;
-
-        return $this;
-    }
-
-    public function getExtraDetails(): ?array
-    {
-        return $this->extraDetails;
-    }
-
-    public function setExtraDetails(array $extraDetails): self
-    {
-        $this->extraDetails = $extraDetails;
-
-        return $this;
-    }
-
-    public function getTrainingPrograms(): ?array
-    {
-        return $this->trainingPrograms;
-    }
-
-    public function setTrainingPrograms(array $trainingPrograms): self
-    {
-        $this->trainingPrograms = $trainingPrograms;
-
-        return $this;
-    }
-
-    public function isTrainingPrograms(): bool
-    {
-        return (
-            $this->isTrainingProgramsTheoretical()
-            && $this->isTrainingProgramsPractical()
-            && $this->getTrainingProgramsTitle() !== null
-        );
-    }
-
-    public function getTrainingProgramsTitle(): ?string
-    {
-        return $this->trainingPrograms['title'] ?? null;
-    }
-
-    public function setTrainingProgramsTitle(?string $title): self
-    {
-        $this->trainingPrograms['title'] = $title;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsTheoretical(): ?array
-    {
-        return $this->trainingPrograms['theoretical'];
-    }
-
-    public function isTrainingProgramsTheoretical(): bool
-    {
-        $theoretical = $this->trainingPrograms['theoretical'] ?? [];
-
-        return (
-            ($theoretical['description'] ?? null) !== null
-            && count($theoretical['list'] ?? []) > 0
-            && ($theoretical['info'] ?? null) !== null
-        );
-    }
-
-    public function getTrainingProgramsTheoreticalDescription(): ?string
-    {
-        return $this->trainingPrograms['theoretical']['description'] ?? null;
-    }
-
-    public function setTrainingProgramsTheoreticalDescription(?string $description): self
-    {
-        $this->trainingPrograms['theoretical']['description'] = $description;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsTheoreticalList(): ?array
-    {
-        return $this->trainingPrograms['theoretical']['list'] ?? null;
-    }
-
-    public function setTrainingProgramsTheoreticalList(array $list): self
-    {
-        $this->trainingPrograms['theoretical']['list'] = $list;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsTheoreticalInfo(): ?string
-    {
-        return $this->trainingPrograms['theoretical']['info'] ?? null;
-    }
-
-    public function setTrainingProgramsTheoreticalInfo(?string $info): self
-    {
-        $this->trainingPrograms['theoretical']['info'] = $info;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsPractical(): ?array
-    {
-        return $this->trainingPrograms['practical'];
-    }
-
-    public function isTrainingProgramsPractical(): bool
-    {
-        $theoretical = $this->trainingPrograms['practical'] ?? [];
-        return (
-            ($theoretical['description'] ?? null) !== null
-            && count($theoretical['list'] ?? []) > 0
-            && ($theoretical['info'] ?? null) !== null
-        );
-    }
-
-    public function getTrainingProgramsPracticalDescription(): ?string
-    {
-        return $this->trainingPrograms['practical']['description'] ?? null;
-    }
-
-    public function setTrainingProgramsPracticalDescription(?string $description): self
-    {
-        $this->trainingPrograms['practical']['description'] = $description;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsPracticalList(): ?array
-    {
-        return $this->trainingPrograms['practical']['list'] ?? null;
-    }
-
-    public function setTrainingProgramsPracticalList(array $list): self
-    {
-        $this->trainingPrograms['practical']['list'] = $list;
-
-        return $this;
-    }
-
-    public function getTrainingProgramsPracticalInfo(): ?string
-    {
-        return $this->trainingPrograms['practical']['info'] ?? null;
-    }
-
-    public function setTrainingProgramsPracticalInfo(?string $info): self
-    {
-        $this->trainingPrograms['practical']['info'] = $info;
-
-        return $this;
-    }
-
-    public function getInfo(): ?string
-    {
-        return $this->info;
-    }
-
-    public function setInfo(?string $info): self
-    {
-        $this->info = $info;
-
-        return $this;
-    }
-
-    public function isLearningOutcomes(): bool
-    {
-         return (
-            $this->isLearningOutcomesFirstBox()
-            || $this->isLearningOutcomesSecondBox()
-            || $this->getLearningOutcomesInfo() !== null
-        );
-    }
-
-    public function getLearningOutcomes(): ?array
-    {
-        return $this->learningOutcomes;
-    }
-
-    public function getLearningOutcomesFirstBox(): ?array
-    {
-        return $this->learningOutcomes['firstBox'];
-    }
-
-    public function isLearningOutcomesFirstBox(): bool
-    {
-        $firstBox = $this->learningOutcomes['firstBox'] ?? [];
-
-        return (
-            ($firstBox['description'] ?? null) !== null
-            && count($firstBox['list'] ?? []) > 0
-            && ($firstBox['title'] ?? null) !== null
-        );
-    }
-
-    public function getLearningOutcomesFirstBoxTitle(): ?string
-    {
-        return $this->learningOutcomes['firstBox']['title'] ?? null;
-    }
-
-    public function setLearningOutcomesFirstBoxTitle(?string $description): self
-    {
-        $this->learningOutcomes['firstBox']['title'] = $description;
-
-        return $this;
-    }
-
-    public function getLearningOutcomesFirstBoxDescription(): ?string
-    {
-        return $this->learningOutcomes['firstBox']['description'] ?? null;
-    }
-
-    public function setLearningOutcomesFirstBoxDescription(?string $description): self
-    {
-        $this->learningOutcomes['firstBox']['description'] = $description;
-
-        return $this;
-    }
-
-    public function getLearningOutcomesFirstBoxList(): ?array
-    {
-        return $this->learningOutcomes['firstBox']['list'] ?? null;
-    }
-
-    public function setLearningOutcomesFirstBoxList(array $list): self
-    {
-        $this->learningOutcomes['firstBox']['list'] = $list;
-
-        return $this;
-    }
-
-    public function getLearningOutcomesSecondBox(): ?array
-    {
-        return $this->learningOutcomes['secondBox'];
-    }
-
-    public function isLearningOutcomesSecondBox(): bool
-    {
-        $secondBox = $this->learningOutcomes['secondBox'] ?? [];
-
-        return (
-            ($secondBox['description'] ?? null) !== null
-            && ($secondBox['title'] ?? null) !== null
-        );
-    }
-
-    public function getLearningOutcomesSecondBoxTitle(): ?string
-    {
-        return $this->learningOutcomes['secondBox']['title'] ?? null;
-    }
-
-    public function setLearningOutcomesSecondBoxTitle(?string $description): self
-    {
-        $this->learningOutcomes['secondBox']['title'] = $description;
-
-        return $this;
-    }
-
-    public function getLearningOutcomesSecondBoxDescription(): ?string
-    {
-        return $this->learningOutcomes['secondBox']['description'] ?? null;
-    }
-
-    public function setLearningOutcomesSecondBoxDescription(?string $description): self
-    {
-        $this->learningOutcomes['secondBox']['description'] = $description;
-
-        return $this;
-    }
-
-    public function getLearningOutcomesInfo(): ?string
-    {
-        return $this->learningOutcomes['info'] ?? null;
-    }
-
-    public function setLearningOutcomesInfo(?string $info): self
-    {
-        $this->learningOutcomes['info'] = $info;
+        if ($this->courseLanguages->removeElement($courseLanguage)) {
+            if ($courseLanguage->getCourse() === $this) {
+                $courseLanguage->setCourse(null);
+            }
+        }
 
         return $this;
     }

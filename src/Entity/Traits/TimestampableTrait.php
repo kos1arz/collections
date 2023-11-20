@@ -7,7 +7,7 @@ use DateTime;
 
 trait TimestampableTrait
 {
-    #[ORM\Column(name: "created_at", type: "datetime", nullable: true)]
+    #[ORM\Column(name: "created_at", type: "datetime", nullable: false)]
     protected ?DateTime $createdAt = null;
 
     #[ORM\Column(name: "updated_at", type: "datetime", nullable: false)]

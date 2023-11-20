@@ -1,0 +1,11 @@
+<div class="d-grid gap-2 d-md-block mb-3">
+    {% set currentUrl = app.request.uri %}
+    {% set idLang = easy_admin_language.getIdLang() %}
+
+    {% for language in languages_service.getAvailableLanguages() %}
+        <a href="{{ currentUrl ~ '&lang=' ~ language.id }}" class="btn btn-outline-primary {{ language.id == idLang ? 'active' : '' }}">
+            <img src="{{ language.flag }}" class="chose-language-icon" style="width:15px;"/>
+            {{ language.name|upper }}
+        </a>
+    {% endfor %}
+</div>
