@@ -30,7 +30,7 @@
     },
     "config": {
         "github-oauth": {
-            "github.com": "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"
+            "github.com": "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"
         },
         "allow-plugins": {
             "php-http/discovery": true,
