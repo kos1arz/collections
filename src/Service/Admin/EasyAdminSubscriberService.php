@@ -19,11 +19,13 @@ class EasyAdminSubscriberService
 
     public function afterBuilt(ManyLanguagesAbstract $entity): void
     {
+        $parts = explode('\\', get_class($entity));
+        $className = strtolower(end($parts));
         $entity->creatChildLanguage();
         $courseLanguage = $this->entityManager
             ->getRepository(get_class($entity->getChildLanguage()))
             ->findOneBy([
-                'course' => $entity,
+                $className => $entity,
                 'language' => $this->getLanguage()
             ]);
 

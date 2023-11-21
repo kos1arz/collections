@@ -39,16 +39,6 @@ class CourseLanguage implements EntityBaseInterface, TimestampableInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $info;
 
-    public function getParent(): ?object
-    {
-        return $this->getCourse();
-    }
-
-    public function setParent(?object $object): self
-    {
-        return $this->setCourse($object);
-    }
-
     public function getCourse(): ?Course
     {
         return $this->course;
