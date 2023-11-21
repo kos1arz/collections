@@ -19,14 +19,12 @@ class LanguageListener
 
         // $languageRepository = $entityManager->getRepository(Language::class);
         // $defaultLanguage = $languageRepository->findDefaultLanguage();
-
         // if($defaultLanguage) {
         //     /** @var Language $defaultLanguage */
         //     $defaultLanguage->setDefault(false);
         //     $entityManager->persist($defaultLanguage);
         //     $entityManager->flush();
         // }
-
         // /** @var Language $entity */
         // $entity->setDefault(true);
         // $entityManager->persist($entity);
